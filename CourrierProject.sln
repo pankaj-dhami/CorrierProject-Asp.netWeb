@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourrierStorage", "CourrierStorage\CourrierStorage.csproj", "{A1354EF9-DB2B-425D-965C-4C770AE123E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourrierBO", "CourrierBO\CourrierBO.csproj", "{076209BC-35CB-4ED4-BF06-CE6495ED0BAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourrierWeb", "CourrierWeb\CourrierWeb.csproj", "{CF5BECB3-08C9-411C-AA8E-AE7B281E8074}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1354EF9-DB2B-425D-965C-4C770AE123E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1354EF9-DB2B-425D-965C-4C770AE123E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1354EF9-DB2B-425D-965C-4C770AE123E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1354EF9-DB2B-425D-965C-4C770AE123E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{076209BC-35CB-4ED4-BF06-CE6495ED0BAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{076209BC-35CB-4ED4-BF06-CE6495ED0BAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{076209BC-35CB-4ED4-BF06-CE6495ED0BAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{076209BC-35CB-4ED4-BF06-CE6495ED0BAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF5BECB3-08C9-411C-AA8E-AE7B281E8074}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF5BECB3-08C9-411C-AA8E-AE7B281E8074}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF5BECB3-08C9-411C-AA8E-AE7B281E8074}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF5BECB3-08C9-411C-AA8E-AE7B281E8074}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
