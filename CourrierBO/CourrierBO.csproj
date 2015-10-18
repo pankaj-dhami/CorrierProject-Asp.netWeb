@@ -74,6 +74,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\AddressInformation.cs" />
+    <Compile Include="Model\AddressType.cs" />
+    <Compile Include="Model\BookingDetails.cs" />
+    <Compile Include="Model\BookingStatus.cs" />
+    <Compile Include="Model\City.cs" />
+    <Compile Include="Model\Country.cs" />
+    <Compile Include="Model\ParcelDetails.cs" />
+    <Compile Include="Model\ParcelType.cs" />
+    <Compile Include="Model\State.cs" />
+    <Compile Include="Model\TrackingInformation.cs" />
+    <Compile Include="Model\UserInformation.cs" />
+    <Compile Include="Model\UserLoginDetails.cs" />
     <Compile Include="Model\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
