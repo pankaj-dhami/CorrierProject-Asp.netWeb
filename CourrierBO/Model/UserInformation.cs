@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CourrierBO.Model
 {
-    class UserInformation
+    public class UserInformation
     {
         [Key]
         public int UserInfoId { get; set; }        
@@ -17,5 +17,8 @@ namespace CourrierBO.Model
         public int Country { get; set; }
         public int City { get; set; }
         public string CountryCode { get; set; }
+
+        [ForeignKey("UserId")]
+        public UserLoginDetails UserLoginDetails  { get; set; }
     }
 }

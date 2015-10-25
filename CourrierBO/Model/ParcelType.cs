@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace CourrierBO.Model
 {
-    class ParcelType
+    public class ParcelType
     {
+        [Key]
          public int ParcleTypeId { get; set; }
          public string ParcleType { get; set; }
     }

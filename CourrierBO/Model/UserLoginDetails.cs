@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CourrierBO.Model
 {
-    class UserLoginDetails
+    public class UserLoginDetails
     {
         [Key]
         public int UserId { get; set; }

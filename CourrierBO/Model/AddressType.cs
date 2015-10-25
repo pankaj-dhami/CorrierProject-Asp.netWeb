@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace CourrierBO.Model
 {
-    class AddressType
+    public class AddressType
     {
+        [Key]
         public int AddressTypeId { get; set; }
-        public string AddressType { get; set; }
+        public string Type { get; set; }
 
     }
 }

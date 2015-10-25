@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace CourrierBO.Model
 {
-    class BookingStatus
+    public class BookingStatus
     {
+        [Key]
         public int BookingStatusId { get; set; }
-        public string BookingStatus { get; set; }
+        public string BookingStatusType { get; set; }
     }
 }

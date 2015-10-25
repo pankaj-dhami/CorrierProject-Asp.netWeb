@@ -1,15 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CourrierBO.Model
 {
-    class State
+    public class State
     {
+        [Key]
         public int StateId { get; set; }
         public string StateName { get; set; }
-        public int Country { get; set; }
+        public int CountryId { get; set; }
+
+        [ForeignKey("CountryId")]
+        public Country Country { get; set; }
     }
 }
