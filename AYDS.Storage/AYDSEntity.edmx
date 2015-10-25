@@ -1,0 +1,976 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AtYourDoorStepModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblAYDSAddressInformation">
+          <Key>
+            <PropertyRef Name="AddressInfoId" />
+          </Key>
+          <Property Name="AddressInfoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="AddressType" Type="int" />
+          <Property Name="FirstName" Type="varchar" MaxLength="150" />
+          <Property Name="LastName" Type="varchar" MaxLength="150" />
+          <Property Name="AddressLine1" Type="nvarchar" MaxLength="700" />
+          <Property Name="AddressLine2" Type="nvarchar" MaxLength="700" />
+          <Property Name="Landmark" Type="nvarchar" MaxLength="400" />
+          <Property Name="Country" Type="int" />
+          <Property Name="City" Type="int" />
+          <Property Name="PinCode" Type="int" />
+          <Property Name="Contact1" Type="int" />
+          <Property Name="Contact2" Type="int" />
+          <Property Name="EmailId" Type="nvarchar" MaxLength="250" />
+          <Property Name="AddressNickName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblAYDSAddressType">
+          <Key>
+            <PropertyRef Name="AddressTypeId" />
+          </Key>
+          <Property Name="AddressTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AddressType" Type="varchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblAYDSBookingDetails">
+          <Key>
+            <PropertyRef Name="BookingId" />
+          </Key>
+          <Property Name="BookingId" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="SenderId" Type="int" />
+          <Property Name="RecieverId" Type="int" />
+          <Property Name="ParcleType" Type="int" />
+          <Property Name="BookingDateTime" Type="datetime" />
+          <Property Name="EstimatedDeliveyDateTime" Type="date" />
+          <Property Name="BookingStatus" Type="int" />
+        </EntityType>
+        <EntityType Name="tblAYDSBookingStatus">
+          <Key>
+            <PropertyRef Name="BookingStatusId" />
+          </Key>
+          <Property Name="BookingStatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookingStatus" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblAYDSCity">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="int" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Country" Type="int" Nullable="false" />
+          <Property Name="State" Type="int" Nullable="false" />
+          <Property Name="PinCode" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblAYDSCountry">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Country" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="CountryCode" Type="nvarchar" MaxLength="6" />
+          <Property Name="CountryShortCode" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tblAYDSParcelDetails">
+          <Key>
+            <PropertyRef Name="ParcelId" />
+          </Key>
+          <Property Name="ParcelId" Type="int" Nullable="false" />
+          <Property Name="ParcelType" Type="int" Nullable="false" />
+          <Property Name="Weight" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Width" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Breadth" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Height" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="tblAYDSParcelType">
+          <Key>
+            <PropertyRef Name="ParcleTypeId" />
+          </Key>
+          <Property Name="ParcleTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParcleType" Type="varchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblAYDSState">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Country" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblAYDSTrackingInformation">
+          <Key>
+            <PropertyRef Name="TrackingId" />
+          </Key>
+          <Property Name="TrackingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookingId" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="CurrentStateDateTime" Type="date" Nullable="false" />
+          <Property Name="CurrentLocation" Type="varchar" MaxLength="1050" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblAYDSUserInformation">
+          <Key>
+            <PropertyRef Name="UserInfoId" />
+          </Key>
+          <Property Name="UserInfoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="DOB" Type="date" Nullable="false" />
+          <Property Name="MobileNumber" Type="int" Nullable="false" />
+          <Property Name="EmailId" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Country" Type="int" />
+          <Property Name="City" Type="int" />
+          <Property Name="CountryCode" Type="nvarchar" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="tblAYDSUserLoginDetail">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="400" Nullable="false" />
+          <Property Name="IsVerified" Type="bit" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="LastLogin" Type="datetime" Nullable="false" />
+          <Property Name="IsActivated" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_tblAYDSAddressInformation_tblAYDSAddressType">
+          <End Role="tblAYDSAddressType" Type="Self.tblAYDSAddressType" Multiplicity="0..1" />
+          <End Role="tblAYDSAddressInformation" Type="Self.tblAYDSAddressInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAYDSAddressType">
+              <PropertyRef Name="AddressTypeId" />
+            </Principal>
+            <Dependent Role="tblAYDSAddressInformation">
+              <PropertyRef Name="AddressType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAYDSAddressInformation_tblAYDSCity">
+          <End Role="tblAYDSCity" Type="Self.tblAYDSCity" Multiplicity="0..1" />
+          <End Role="tblAYDSAddressInformation" Type="Self.tblAYDSAddressInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAYDSCity">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="tblAYDSAddressInformation">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAYDSAddressInformation_tblAYDSCountry">
+          <End Role="tblAYDSCountry" Type="Self.tblAYDSCountry" Multiplicity="0..1" />
+          <End Role="tblAYDSAddressInformation" Type="Self.tblAYDSAddressInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAYDSCountry">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="tblAYDSAddressInformation">
+              <PropertyRef Name="Country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAYDSAddressInformation_tblAYDSUserLoginDetail">
+          <End Role="tblAYDSUserLoginDetail" Type="Self.tblAYDSUserLoginDetail" Multiplicity="0..1" />
+          <End Role="tblAYDSAddressInformation" Type="Self.tblAYDSAddressInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAYDSUserLoginDetail">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblAYDSAddressInformation">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAYDSBookingDetails_tblAYDSAddressInformation">
+          <End Role="tblAYDSAddressInformation" Type="Self.tblAYDSAddressInformation" Multiplicity="0..1" />
+          <End Role="tblAYDSBookingDetails" Type="Self.tblAYDSBookingDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAYDSAddressInformation">
+              <PropertyRef Name="AddressInfoId" />
+            </Principal>
+            <Dependent Role="tblAYDSBookingDetails">
+              <PropertyRef Name="RecieverId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAYDSBookingDetails_tblAYDSAddressInformation1">
+          <End Role="tblAYDSAddressInformation" Type="Self.tblAYDSAddressInformation" Multiplicity="0..1" />
+          <End Role="tblAYDSBookingDetails" Type="Self.tblAYDSBookingDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAYDSAddressInformation">
+              <PropertyRef Name="AddressInfoId" />
+            </Principal>
+            <Dependent Role="tblAYDSBookingDetails">
+              <PropertyRef Name="SenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAYDSBookingDetails_tblAYDSParcelDetails">
+          <End Role="tblAYDSParcelDetails" Type="Self.tblAYDSParcelDetails" Multiplicity="0..1" />
+          <End Role="tblAYDSBookingDetails" Type="Self.tblAYDSBookingDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAYDSParcelDetails">
+              <PropertyRef Name="ParcelId" />
+            </Principal>
+            <Dependent Role="tblAYDSBookingDetails">
+              <PropertyRef Name="ParcleType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAYDSBookingDetails_tblAYDSUserLoginDetail">
+          <End Role="tblAYDSUserLoginDetail" Type="Self.tblAYDSUserLoginDetail" Multiplicity="0..1" />
+          <End Role="tblAYDSBookingDetails" Type="Self.tblAYDSBookingDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAYDSUserLoginDetail">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblAYDSBookingDetails">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAYDSCity_tblAYDSCountry">
+          <End Role="tblAYDSCountry" Type="Self.tblAYDSCountry" Multiplicity="1" />
+          <End Role="tblAYDSCity" Type="Self.tblAYDSCity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAYDSCountry">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="tblAYDSCity">
+              <PropertyRef Name="Country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAYDSCity_tblAYDSState">
+          <End Role="tblAYDSState" Type="Self.tblAYDSState" Multiplicity="1" />
+          <End Role="tblAYDSCity" Type="Self.tblAYDSCity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAYDSState">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="tblAYDSCity">
+              <PropertyRef Name="State" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAYDSParcelDetails_tblAYDSParcelType">
+          <End Role="tblAYDSParcelType" Type="Self.tblAYDSParcelType" Multiplicity="1" />
+          <End Role="tblAYDSParcelDetails" Type="Self.tblAYDSParcelDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAYDSParcelType">
+              <PropertyRef Name="ParcleTypeId" />
+            </Principal>
+            <Dependent Role="tblAYDSParcelDetails">
+              <PropertyRef Name="ParcelType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAYDSState_tblAYDSCountry">
+          <End Role="tblAYDSCountry" Type="Self.tblAYDSCountry" Multiplicity="1" />
+          <End Role="tblAYDSState" Type="Self.tblAYDSState" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAYDSCountry">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="tblAYDSState">
+              <PropertyRef Name="Country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAYDSTrackingInformation_tblAYDSBookingDetails">
+          <End Role="tblAYDSBookingDetails" Type="Self.tblAYDSBookingDetails" Multiplicity="1" />
+          <End Role="tblAYDSTrackingInformation" Type="Self.tblAYDSTrackingInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAYDSBookingDetails">
+              <PropertyRef Name="BookingId" />
+            </Principal>
+            <Dependent Role="tblAYDSTrackingInformation">
+              <PropertyRef Name="BookingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAYDSUserInformation_tblAYDSCity">
+          <End Role="tblAYDSCity" Type="Self.tblAYDSCity" Multiplicity="0..1" />
+          <End Role="tblAYDSUserInformation" Type="Self.tblAYDSUserInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAYDSCity">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="tblAYDSUserInformation">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAYDSUserInformation_tblAYDSCountry">
+          <End Role="tblAYDSCountry" Type="Self.tblAYDSCountry" Multiplicity="0..1" />
+          <End Role="tblAYDSUserInformation" Type="Self.tblAYDSUserInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAYDSCountry">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="tblAYDSUserInformation">
+              <PropertyRef Name="Country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AtYourDoorStepModelStoreContainer">
+          <EntitySet Name="tblAYDSAddressInformation" EntityType="Self.tblAYDSAddressInformation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAYDSAddressType" EntityType="Self.tblAYDSAddressType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAYDSBookingDetails" EntityType="Self.tblAYDSBookingDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAYDSBookingStatus" EntityType="Self.tblAYDSBookingStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAYDSCity" EntityType="Self.tblAYDSCity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAYDSCountry" EntityType="Self.tblAYDSCountry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAYDSParcelDetails" EntityType="Self.tblAYDSParcelDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAYDSParcelType" EntityType="Self.tblAYDSParcelType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAYDSState" EntityType="Self.tblAYDSState" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAYDSTrackingInformation" EntityType="Self.tblAYDSTrackingInformation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAYDSUserInformation" EntityType="Self.tblAYDSUserInformation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAYDSUserLoginDetail" EntityType="Self.tblAYDSUserLoginDetail" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tblAYDSAddressInformation_tblAYDSAddressType" Association="Self.FK_tblAYDSAddressInformation_tblAYDSAddressType">
+            <End Role="tblAYDSAddressType" EntitySet="tblAYDSAddressType" />
+            <End Role="tblAYDSAddressInformation" EntitySet="tblAYDSAddressInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAYDSAddressInformation_tblAYDSCity" Association="Self.FK_tblAYDSAddressInformation_tblAYDSCity">
+            <End Role="tblAYDSCity" EntitySet="tblAYDSCity" />
+            <End Role="tblAYDSAddressInformation" EntitySet="tblAYDSAddressInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAYDSAddressInformation_tblAYDSCountry" Association="Self.FK_tblAYDSAddressInformation_tblAYDSCountry">
+            <End Role="tblAYDSCountry" EntitySet="tblAYDSCountry" />
+            <End Role="tblAYDSAddressInformation" EntitySet="tblAYDSAddressInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAYDSAddressInformation_tblAYDSUserLoginDetail" Association="Self.FK_tblAYDSAddressInformation_tblAYDSUserLoginDetail">
+            <End Role="tblAYDSUserLoginDetail" EntitySet="tblAYDSUserLoginDetail" />
+            <End Role="tblAYDSAddressInformation" EntitySet="tblAYDSAddressInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAYDSBookingDetails_tblAYDSAddressInformation" Association="Self.FK_tblAYDSBookingDetails_tblAYDSAddressInformation">
+            <End Role="tblAYDSAddressInformation" EntitySet="tblAYDSAddressInformation" />
+            <End Role="tblAYDSBookingDetails" EntitySet="tblAYDSBookingDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAYDSBookingDetails_tblAYDSAddressInformation1" Association="Self.FK_tblAYDSBookingDetails_tblAYDSAddressInformation1">
+            <End Role="tblAYDSAddressInformation" EntitySet="tblAYDSAddressInformation" />
+            <End Role="tblAYDSBookingDetails" EntitySet="tblAYDSBookingDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAYDSBookingDetails_tblAYDSParcelDetails" Association="Self.FK_tblAYDSBookingDetails_tblAYDSParcelDetails">
+            <End Role="tblAYDSParcelDetails" EntitySet="tblAYDSParcelDetails" />
+            <End Role="tblAYDSBookingDetails" EntitySet="tblAYDSBookingDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAYDSBookingDetails_tblAYDSUserLoginDetail" Association="Self.FK_tblAYDSBookingDetails_tblAYDSUserLoginDetail">
+            <End Role="tblAYDSUserLoginDetail" EntitySet="tblAYDSUserLoginDetail" />
+            <End Role="tblAYDSBookingDetails" EntitySet="tblAYDSBookingDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAYDSCity_tblAYDSCountry" Association="Self.FK_tblAYDSCity_tblAYDSCountry">
+            <End Role="tblAYDSCountry" EntitySet="tblAYDSCountry" />
+            <End Role="tblAYDSCity" EntitySet="tblAYDSCity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAYDSCity_tblAYDSState" Association="Self.FK_tblAYDSCity_tblAYDSState">
+            <End Role="tblAYDSState" EntitySet="tblAYDSState" />
+            <End Role="tblAYDSCity" EntitySet="tblAYDSCity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAYDSParcelDetails_tblAYDSParcelType" Association="Self.FK_tblAYDSParcelDetails_tblAYDSParcelType">
+            <End Role="tblAYDSParcelType" EntitySet="tblAYDSParcelType" />
+            <End Role="tblAYDSParcelDetails" EntitySet="tblAYDSParcelDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAYDSState_tblAYDSCountry" Association="Self.FK_tblAYDSState_tblAYDSCountry">
+            <End Role="tblAYDSCountry" EntitySet="tblAYDSCountry" />
+            <End Role="tblAYDSState" EntitySet="tblAYDSState" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAYDSTrackingInformation_tblAYDSBookingDetails" Association="Self.FK_tblAYDSTrackingInformation_tblAYDSBookingDetails">
+            <End Role="tblAYDSBookingDetails" EntitySet="tblAYDSBookingDetails" />
+            <End Role="tblAYDSTrackingInformation" EntitySet="tblAYDSTrackingInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAYDSUserInformation_tblAYDSCity" Association="Self.FK_tblAYDSUserInformation_tblAYDSCity">
+            <End Role="tblAYDSCity" EntitySet="tblAYDSCity" />
+            <End Role="tblAYDSUserInformation" EntitySet="tblAYDSUserInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAYDSUserInformation_tblAYDSCountry" Association="Self.FK_tblAYDSUserInformation_tblAYDSCountry">
+            <End Role="tblAYDSCountry" EntitySet="tblAYDSCountry" />
+            <End Role="tblAYDSUserInformation" EntitySet="tblAYDSUserInformation" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AtYourDoorStepModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblAYDSAddressInformation">
+          <Key>
+            <PropertyRef Name="AddressInfoId" />
+          </Key>
+          <Property Name="AddressInfoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="AddressType" Type="Int32" />
+          <Property Name="FirstName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="AddressLine1" Type="String" MaxLength="700" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLine2" Type="String" MaxLength="700" FixedLength="false" Unicode="true" />
+          <Property Name="Landmark" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="Int32" />
+          <Property Name="City" Type="Int32" />
+          <Property Name="PinCode" Type="Int32" />
+          <Property Name="Contact1" Type="Int32" />
+          <Property Name="Contact2" Type="Int32" />
+          <Property Name="EmailId" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="AddressNickName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblAYDSAddressType" Relationship="Self.FK_tblAYDSAddressInformation_tblAYDSAddressType" FromRole="tblAYDSAddressInformation" ToRole="tblAYDSAddressType" />
+          <NavigationProperty Name="tblAYDSCity" Relationship="Self.FK_tblAYDSAddressInformation_tblAYDSCity" FromRole="tblAYDSAddressInformation" ToRole="tblAYDSCity" />
+          <NavigationProperty Name="tblAYDSCountry" Relationship="Self.FK_tblAYDSAddressInformation_tblAYDSCountry" FromRole="tblAYDSAddressInformation" ToRole="tblAYDSCountry" />
+          <NavigationProperty Name="tblAYDSUserLoginDetail" Relationship="Self.FK_tblAYDSAddressInformation_tblAYDSUserLoginDetail" FromRole="tblAYDSAddressInformation" ToRole="tblAYDSUserLoginDetail" />
+          <NavigationProperty Name="tblAYDSBookingDetails" Relationship="Self.FK_tblAYDSBookingDetails_tblAYDSAddressInformation" FromRole="tblAYDSAddressInformation" ToRole="tblAYDSBookingDetails" />
+          <NavigationProperty Name="tblAYDSBookingDetails1" Relationship="Self.FK_tblAYDSBookingDetails_tblAYDSAddressInformation1" FromRole="tblAYDSAddressInformation" ToRole="tblAYDSBookingDetails" />
+        </EntityType>
+        <EntityType Name="tblAYDSAddressType">
+          <Key>
+            <PropertyRef Name="AddressTypeId" />
+          </Key>
+          <Property Name="AddressTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AddressType" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblAYDSAddressInformations" Relationship="Self.FK_tblAYDSAddressInformation_tblAYDSAddressType" FromRole="tblAYDSAddressType" ToRole="tblAYDSAddressInformation" />
+        </EntityType>
+        <EntityType Name="tblAYDSBookingDetail">
+          <Key>
+            <PropertyRef Name="BookingId" />
+          </Key>
+          <Property Name="BookingId" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="SenderId" Type="Int32" />
+          <Property Name="RecieverId" Type="Int32" />
+          <Property Name="ParcleType" Type="Int32" />
+          <Property Name="BookingDateTime" Type="DateTime" Precision="3" />
+          <Property Name="EstimatedDeliveyDateTime" Type="DateTime" Precision="0" />
+          <Property Name="BookingStatus" Type="Int32" />
+          <NavigationProperty Name="tblAYDSAddressInformation" Relationship="Self.FK_tblAYDSBookingDetails_tblAYDSAddressInformation" FromRole="tblAYDSBookingDetails" ToRole="tblAYDSAddressInformation" />
+          <NavigationProperty Name="tblAYDSAddressInformation1" Relationship="Self.FK_tblAYDSBookingDetails_tblAYDSAddressInformation1" FromRole="tblAYDSBookingDetails" ToRole="tblAYDSAddressInformation" />
+          <NavigationProperty Name="tblAYDSParcelDetail" Relationship="Self.FK_tblAYDSBookingDetails_tblAYDSParcelDetails" FromRole="tblAYDSBookingDetails" ToRole="tblAYDSParcelDetails" />
+          <NavigationProperty Name="tblAYDSUserLoginDetail" Relationship="Self.FK_tblAYDSBookingDetails_tblAYDSUserLoginDetail" FromRole="tblAYDSBookingDetails" ToRole="tblAYDSUserLoginDetail" />
+          <NavigationProperty Name="tblAYDSTrackingInformations" Relationship="Self.FK_tblAYDSTrackingInformation_tblAYDSBookingDetails" FromRole="tblAYDSBookingDetails" ToRole="tblAYDSTrackingInformation" />
+        </EntityType>
+        <EntityType Name="tblAYDSBookingStatu">
+          <Key>
+            <PropertyRef Name="BookingStatusId" />
+          </Key>
+          <Property Name="BookingStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookingStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblAYDSCity">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="Int32" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Country" Type="Int32" Nullable="false" />
+          <Property Name="State" Type="Int32" Nullable="false" />
+          <Property Name="PinCode" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblAYDSAddressInformations" Relationship="Self.FK_tblAYDSAddressInformation_tblAYDSCity" FromRole="tblAYDSCity" ToRole="tblAYDSAddressInformation" />
+          <NavigationProperty Name="tblAYDSCountry" Relationship="Self.FK_tblAYDSCity_tblAYDSCountry" FromRole="tblAYDSCity" ToRole="tblAYDSCountry" />
+          <NavigationProperty Name="tblAYDSState" Relationship="Self.FK_tblAYDSCity_tblAYDSState" FromRole="tblAYDSCity" ToRole="tblAYDSState" />
+          <NavigationProperty Name="tblAYDSUserInformations" Relationship="Self.FK_tblAYDSUserInformation_tblAYDSCity" FromRole="tblAYDSCity" ToRole="tblAYDSUserInformation" />
+        </EntityType>
+        <EntityType Name="tblAYDSCountry">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Country" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CountryCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="CountryShortCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblAYDSAddressInformations" Relationship="Self.FK_tblAYDSAddressInformation_tblAYDSCountry" FromRole="tblAYDSCountry" ToRole="tblAYDSAddressInformation" />
+          <NavigationProperty Name="tblAYDSCities" Relationship="Self.FK_tblAYDSCity_tblAYDSCountry" FromRole="tblAYDSCountry" ToRole="tblAYDSCity" />
+          <NavigationProperty Name="tblAYDSStates" Relationship="Self.FK_tblAYDSState_tblAYDSCountry" FromRole="tblAYDSCountry" ToRole="tblAYDSState" />
+          <NavigationProperty Name="tblAYDSUserInformations" Relationship="Self.FK_tblAYDSUserInformation_tblAYDSCountry" FromRole="tblAYDSCountry" ToRole="tblAYDSUserInformation" />
+        </EntityType>
+        <EntityType Name="tblAYDSParcelDetail">
+          <Key>
+            <PropertyRef Name="ParcelId" />
+          </Key>
+          <Property Name="ParcelId" Type="Int32" Nullable="false" />
+          <Property Name="ParcelType" Type="Int32" Nullable="false" />
+          <Property Name="Weight" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Width" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Breadth" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Height" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="tblAYDSBookingDetails" Relationship="Self.FK_tblAYDSBookingDetails_tblAYDSParcelDetails" FromRole="tblAYDSParcelDetails" ToRole="tblAYDSBookingDetails" />
+          <NavigationProperty Name="tblAYDSParcelType" Relationship="Self.FK_tblAYDSParcelDetails_tblAYDSParcelType" FromRole="tblAYDSParcelDetails" ToRole="tblAYDSParcelType" />
+        </EntityType>
+        <EntityType Name="tblAYDSParcelType">
+          <Key>
+            <PropertyRef Name="ParcleTypeId" />
+          </Key>
+          <Property Name="ParcleTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParcleType" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblAYDSParcelDetails" Relationship="Self.FK_tblAYDSParcelDetails_tblAYDSParcelType" FromRole="tblAYDSParcelType" ToRole="tblAYDSParcelDetails" />
+        </EntityType>
+        <EntityType Name="tblAYDSState">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Country" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblAYDSCities" Relationship="Self.FK_tblAYDSCity_tblAYDSState" FromRole="tblAYDSState" ToRole="tblAYDSCity" />
+          <NavigationProperty Name="tblAYDSCountry" Relationship="Self.FK_tblAYDSState_tblAYDSCountry" FromRole="tblAYDSState" ToRole="tblAYDSCountry" />
+        </EntityType>
+        <EntityType Name="tblAYDSTrackingInformation">
+          <Key>
+            <PropertyRef Name="TrackingId" />
+          </Key>
+          <Property Name="TrackingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookingId" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="CurrentStateDateTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CurrentLocation" Type="String" MaxLength="1050" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblAYDSBookingDetail" Relationship="Self.FK_tblAYDSTrackingInformation_tblAYDSBookingDetails" FromRole="tblAYDSTrackingInformation" ToRole="tblAYDSBookingDetails" />
+        </EntityType>
+        <EntityType Name="tblAYDSUserInformation">
+          <Key>
+            <PropertyRef Name="UserInfoId" />
+          </Key>
+          <Property Name="UserInfoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="MobileNumber" Type="Int32" Nullable="false" />
+          <Property Name="EmailId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Country" Type="Int32" />
+          <Property Name="City" Type="Int32" />
+          <Property Name="CountryCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblAYDSCity" Relationship="Self.FK_tblAYDSUserInformation_tblAYDSCity" FromRole="tblAYDSUserInformation" ToRole="tblAYDSCity" />
+          <NavigationProperty Name="tblAYDSCountry" Relationship="Self.FK_tblAYDSUserInformation_tblAYDSCountry" FromRole="tblAYDSUserInformation" ToRole="tblAYDSCountry" />
+        </EntityType>
+        <EntityType Name="tblAYDSUserLoginDetail">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="400" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsVerified" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastLogin" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActivated" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblAYDSAddressInformations" Relationship="Self.FK_tblAYDSAddressInformation_tblAYDSUserLoginDetail" FromRole="tblAYDSUserLoginDetail" ToRole="tblAYDSAddressInformation" />
+          <NavigationProperty Name="tblAYDSBookingDetails" Relationship="Self.FK_tblAYDSBookingDetails_tblAYDSUserLoginDetail" FromRole="tblAYDSUserLoginDetail" ToRole="tblAYDSBookingDetails" />
+        </EntityType>
+        <Association Name="FK_tblAYDSAddressInformation_tblAYDSAddressType">
+          <End Role="tblAYDSAddressType" Type="Self.tblAYDSAddressType" Multiplicity="0..1" />
+          <End Role="tblAYDSAddressInformation" Type="Self.tblAYDSAddressInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAYDSAddressType">
+              <PropertyRef Name="AddressTypeId" />
+            </Principal>
+            <Dependent Role="tblAYDSAddressInformation">
+              <PropertyRef Name="AddressType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAYDSAddressInformation_tblAYDSCity">
+          <End Role="tblAYDSCity" Type="Self.tblAYDSCity" Multiplicity="0..1" />
+          <End Role="tblAYDSAddressInformation" Type="Self.tblAYDSAddressInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAYDSCity">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="tblAYDSAddressInformation">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAYDSAddressInformation_tblAYDSCountry">
+          <End Role="tblAYDSCountry" Type="Self.tblAYDSCountry" Multiplicity="0..1" />
+          <End Role="tblAYDSAddressInformation" Type="Self.tblAYDSAddressInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAYDSCountry">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="tblAYDSAddressInformation">
+              <PropertyRef Name="Country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAYDSAddressInformation_tblAYDSUserLoginDetail">
+          <End Role="tblAYDSUserLoginDetail" Type="Self.tblAYDSUserLoginDetail" Multiplicity="0..1" />
+          <End Role="tblAYDSAddressInformation" Type="Self.tblAYDSAddressInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAYDSUserLoginDetail">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblAYDSAddressInformation">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAYDSBookingDetails_tblAYDSAddressInformation">
+          <End Role="tblAYDSAddressInformation" Type="Self.tblAYDSAddressInformation" Multiplicity="0..1" />
+          <End Role="tblAYDSBookingDetails" Type="Self.tblAYDSBookingDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAYDSAddressInformation">
+              <PropertyRef Name="AddressInfoId" />
+            </Principal>
+            <Dependent Role="tblAYDSBookingDetails">
+              <PropertyRef Name="RecieverId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAYDSBookingDetails_tblAYDSAddressInformation1">
+          <End Role="tblAYDSAddressInformation" Type="Self.tblAYDSAddressInformation" Multiplicity="0..1" />
+          <End Role="tblAYDSBookingDetails" Type="Self.tblAYDSBookingDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAYDSAddressInformation">
+              <PropertyRef Name="AddressInfoId" />
+            </Principal>
+            <Dependent Role="tblAYDSBookingDetails">
+              <PropertyRef Name="SenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAYDSBookingDetails_tblAYDSParcelDetails">
+          <End Role="tblAYDSParcelDetails" Type="Self.tblAYDSParcelDetail" Multiplicity="0..1" />
+          <End Role="tblAYDSBookingDetails" Type="Self.tblAYDSBookingDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAYDSParcelDetails">
+              <PropertyRef Name="ParcelId" />
+            </Principal>
+            <Dependent Role="tblAYDSBookingDetails">
+              <PropertyRef Name="ParcleType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAYDSBookingDetails_tblAYDSUserLoginDetail">
+          <End Role="tblAYDSUserLoginDetail" Type="Self.tblAYDSUserLoginDetail" Multiplicity="0..1" />
+          <End Role="tblAYDSBookingDetails" Type="Self.tblAYDSBookingDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAYDSUserLoginDetail">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblAYDSBookingDetails">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAYDSTrackingInformation_tblAYDSBookingDetails">
+          <End Role="tblAYDSBookingDetails" Type="Self.tblAYDSBookingDetail" Multiplicity="1" />
+          <End Role="tblAYDSTrackingInformation" Type="Self.tblAYDSTrackingInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAYDSBookingDetails">
+              <PropertyRef Name="BookingId" />
+            </Principal>
+            <Dependent Role="tblAYDSTrackingInformation">
+              <PropertyRef Name="BookingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAYDSCity_tblAYDSCountry">
+          <End Role="tblAYDSCountry" Type="Self.tblAYDSCountry" Multiplicity="1" />
+          <End Role="tblAYDSCity" Type="Self.tblAYDSCity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAYDSCountry">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="tblAYDSCity">
+              <PropertyRef Name="Country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAYDSCity_tblAYDSState">
+          <End Role="tblAYDSState" Type="Self.tblAYDSState" Multiplicity="1" />
+          <End Role="tblAYDSCity" Type="Self.tblAYDSCity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAYDSState">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="tblAYDSCity">
+              <PropertyRef Name="State" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAYDSUserInformation_tblAYDSCity">
+          <End Role="tblAYDSCity" Type="Self.tblAYDSCity" Multiplicity="0..1" />
+          <End Role="tblAYDSUserInformation" Type="Self.tblAYDSUserInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAYDSCity">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="tblAYDSUserInformation">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAYDSState_tblAYDSCountry">
+          <End Role="tblAYDSCountry" Type="Self.tblAYDSCountry" Multiplicity="1" />
+          <End Role="tblAYDSState" Type="Self.tblAYDSState" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAYDSCountry">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="tblAYDSState">
+              <PropertyRef Name="Country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAYDSUserInformation_tblAYDSCountry">
+          <End Role="tblAYDSCountry" Type="Self.tblAYDSCountry" Multiplicity="0..1" />
+          <End Role="tblAYDSUserInformation" Type="Self.tblAYDSUserInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAYDSCountry">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="tblAYDSUserInformation">
+              <PropertyRef Name="Country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAYDSParcelDetails_tblAYDSParcelType">
+          <End Role="tblAYDSParcelType" Type="Self.tblAYDSParcelType" Multiplicity="1" />
+          <End Role="tblAYDSParcelDetails" Type="Self.tblAYDSParcelDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAYDSParcelType">
+              <PropertyRef Name="ParcleTypeId" />
+            </Principal>
+            <Dependent Role="tblAYDSParcelDetails">
+              <PropertyRef Name="ParcelType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AtYourDoorStepEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblAYDSAddressInformations" EntityType="Self.tblAYDSAddressInformation" />
+          <EntitySet Name="tblAYDSAddressTypes" EntityType="Self.tblAYDSAddressType" />
+          <EntitySet Name="tblAYDSBookingDetails" EntityType="Self.tblAYDSBookingDetail" />
+          <EntitySet Name="tblAYDSBookingStatus" EntityType="Self.tblAYDSBookingStatu" />
+          <EntitySet Name="tblAYDSCities" EntityType="Self.tblAYDSCity" />
+          <EntitySet Name="tblAYDSCountries" EntityType="Self.tblAYDSCountry" />
+          <EntitySet Name="tblAYDSParcelDetails" EntityType="Self.tblAYDSParcelDetail" />
+          <EntitySet Name="tblAYDSParcelTypes" EntityType="Self.tblAYDSParcelType" />
+          <EntitySet Name="tblAYDSStates" EntityType="Self.tblAYDSState" />
+          <EntitySet Name="tblAYDSTrackingInformations" EntityType="Self.tblAYDSTrackingInformation" />
+          <EntitySet Name="tblAYDSUserInformations" EntityType="Self.tblAYDSUserInformation" />
+          <EntitySet Name="tblAYDSUserLoginDetails" EntityType="Self.tblAYDSUserLoginDetail" />
+          <AssociationSet Name="FK_tblAYDSAddressInformation_tblAYDSAddressType" Association="Self.FK_tblAYDSAddressInformation_tblAYDSAddressType">
+            <End Role="tblAYDSAddressType" EntitySet="tblAYDSAddressTypes" />
+            <End Role="tblAYDSAddressInformation" EntitySet="tblAYDSAddressInformations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAYDSAddressInformation_tblAYDSCity" Association="Self.FK_tblAYDSAddressInformation_tblAYDSCity">
+            <End Role="tblAYDSCity" EntitySet="tblAYDSCities" />
+            <End Role="tblAYDSAddressInformation" EntitySet="tblAYDSAddressInformations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAYDSAddressInformation_tblAYDSCountry" Association="Self.FK_tblAYDSAddressInformation_tblAYDSCountry">
+            <End Role="tblAYDSCountry" EntitySet="tblAYDSCountries" />
+            <End Role="tblAYDSAddressInformation" EntitySet="tblAYDSAddressInformations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAYDSAddressInformation_tblAYDSUserLoginDetail" Association="Self.FK_tblAYDSAddressInformation_tblAYDSUserLoginDetail">
+            <End Role="tblAYDSUserLoginDetail" EntitySet="tblAYDSUserLoginDetails" />
+            <End Role="tblAYDSAddressInformation" EntitySet="tblAYDSAddressInformations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAYDSBookingDetails_tblAYDSAddressInformation" Association="Self.FK_tblAYDSBookingDetails_tblAYDSAddressInformation">
+            <End Role="tblAYDSAddressInformation" EntitySet="tblAYDSAddressInformations" />
+            <End Role="tblAYDSBookingDetails" EntitySet="tblAYDSBookingDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAYDSBookingDetails_tblAYDSAddressInformation1" Association="Self.FK_tblAYDSBookingDetails_tblAYDSAddressInformation1">
+            <End Role="tblAYDSAddressInformation" EntitySet="tblAYDSAddressInformations" />
+            <End Role="tblAYDSBookingDetails" EntitySet="tblAYDSBookingDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAYDSBookingDetails_tblAYDSParcelDetails" Association="Self.FK_tblAYDSBookingDetails_tblAYDSParcelDetails">
+            <End Role="tblAYDSParcelDetails" EntitySet="tblAYDSParcelDetails" />
+            <End Role="tblAYDSBookingDetails" EntitySet="tblAYDSBookingDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAYDSBookingDetails_tblAYDSUserLoginDetail" Association="Self.FK_tblAYDSBookingDetails_tblAYDSUserLoginDetail">
+            <End Role="tblAYDSUserLoginDetail" EntitySet="tblAYDSUserLoginDetails" />
+            <End Role="tblAYDSBookingDetails" EntitySet="tblAYDSBookingDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAYDSTrackingInformation_tblAYDSBookingDetails" Association="Self.FK_tblAYDSTrackingInformation_tblAYDSBookingDetails">
+            <End Role="tblAYDSBookingDetails" EntitySet="tblAYDSBookingDetails" />
+            <End Role="tblAYDSTrackingInformation" EntitySet="tblAYDSTrackingInformations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAYDSCity_tblAYDSCountry" Association="Self.FK_tblAYDSCity_tblAYDSCountry">
+            <End Role="tblAYDSCountry" EntitySet="tblAYDSCountries" />
+            <End Role="tblAYDSCity" EntitySet="tblAYDSCities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAYDSCity_tblAYDSState" Association="Self.FK_tblAYDSCity_tblAYDSState">
+            <End Role="tblAYDSState" EntitySet="tblAYDSStates" />
+            <End Role="tblAYDSCity" EntitySet="tblAYDSCities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAYDSUserInformation_tblAYDSCity" Association="Self.FK_tblAYDSUserInformation_tblAYDSCity">
+            <End Role="tblAYDSCity" EntitySet="tblAYDSCities" />
+            <End Role="tblAYDSUserInformation" EntitySet="tblAYDSUserInformations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAYDSState_tblAYDSCountry" Association="Self.FK_tblAYDSState_tblAYDSCountry">
+            <End Role="tblAYDSCountry" EntitySet="tblAYDSCountries" />
+            <End Role="tblAYDSState" EntitySet="tblAYDSStates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAYDSUserInformation_tblAYDSCountry" Association="Self.FK_tblAYDSUserInformation_tblAYDSCountry">
+            <End Role="tblAYDSCountry" EntitySet="tblAYDSCountries" />
+            <End Role="tblAYDSUserInformation" EntitySet="tblAYDSUserInformations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAYDSParcelDetails_tblAYDSParcelType" Association="Self.FK_tblAYDSParcelDetails_tblAYDSParcelType">
+            <End Role="tblAYDSParcelType" EntitySet="tblAYDSParcelTypes" />
+            <End Role="tblAYDSParcelDetails" EntitySet="tblAYDSParcelDetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AtYourDoorStepModelStoreContainer" CdmEntityContainer="AtYourDoorStepEntities">
+          <EntitySetMapping Name="tblAYDSAddressInformations">
+            <EntityTypeMapping TypeName="AtYourDoorStepModel.tblAYDSAddressInformation">
+              <MappingFragment StoreEntitySet="tblAYDSAddressInformation">
+                <ScalarProperty Name="AddressInfoId" ColumnName="AddressInfoId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="AddressType" ColumnName="AddressType" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+                <ScalarProperty Name="Landmark" ColumnName="Landmark" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+                <ScalarProperty Name="Contact1" ColumnName="Contact1" />
+                <ScalarProperty Name="Contact2" ColumnName="Contact2" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="AddressNickName" ColumnName="AddressNickName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAYDSAddressTypes">
+            <EntityTypeMapping TypeName="AtYourDoorStepModel.tblAYDSAddressType">
+              <MappingFragment StoreEntitySet="tblAYDSAddressType">
+                <ScalarProperty Name="AddressTypeId" ColumnName="AddressTypeId" />
+                <ScalarProperty Name="AddressType" ColumnName="AddressType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAYDSBookingDetails">
+            <EntityTypeMapping TypeName="AtYourDoorStepModel.tblAYDSBookingDetail">
+              <MappingFragment StoreEntitySet="tblAYDSBookingDetails">
+                <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="SenderId" ColumnName="SenderId" />
+                <ScalarProperty Name="RecieverId" ColumnName="RecieverId" />
+                <ScalarProperty Name="ParcleType" ColumnName="ParcleType" />
+                <ScalarProperty Name="BookingDateTime" ColumnName="BookingDateTime" />
+                <ScalarProperty Name="EstimatedDeliveyDateTime" ColumnName="EstimatedDeliveyDateTime" />
+                <ScalarProperty Name="BookingStatus" ColumnName="BookingStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAYDSBookingStatus">
+            <EntityTypeMapping TypeName="AtYourDoorStepModel.tblAYDSBookingStatu">
+              <MappingFragment StoreEntitySet="tblAYDSBookingStatus">
+                <ScalarProperty Name="BookingStatusId" ColumnName="BookingStatusId" />
+                <ScalarProperty Name="BookingStatus" ColumnName="BookingStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAYDSCities">
+            <EntityTypeMapping TypeName="AtYourDoorStepModel.tblAYDSCity">
+              <MappingFragment StoreEntitySet="tblAYDSCity">
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAYDSCountries">
+            <EntityTypeMapping TypeName="AtYourDoorStepModel.tblAYDSCountry">
+              <MappingFragment StoreEntitySet="tblAYDSCountry">
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="CountryShortCode" ColumnName="CountryShortCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAYDSParcelDetails">
+            <EntityTypeMapping TypeName="AtYourDoorStepModel.tblAYDSParcelDetail">
+              <MappingFragment StoreEntitySet="tblAYDSParcelDetails">
+                <ScalarProperty Name="ParcelId" ColumnName="ParcelId" />
+                <ScalarProperty Name="ParcelType" ColumnName="ParcelType" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Breadth" ColumnName="Breadth" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAYDSParcelTypes">
+            <EntityTypeMapping TypeName="AtYourDoorStepModel.tblAYDSParcelType">
+              <MappingFragment StoreEntitySet="tblAYDSParcelType">
+                <ScalarProperty Name="ParcleTypeId" ColumnName="ParcleTypeId" />
+                <ScalarProperty Name="ParcleType" ColumnName="ParcleType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAYDSStates">
+            <EntityTypeMapping TypeName="AtYourDoorStepModel.tblAYDSState">
+              <MappingFragment StoreEntitySet="tblAYDSState">
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAYDSTrackingInformations">
+            <EntityTypeMapping TypeName="AtYourDoorStepModel.tblAYDSTrackingInformation">
+              <MappingFragment StoreEntitySet="tblAYDSTrackingInformation">
+                <ScalarProperty Name="TrackingId" ColumnName="TrackingId" />
+                <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+                <ScalarProperty Name="CurrentStateDateTime" ColumnName="CurrentStateDateTime" />
+                <ScalarProperty Name="CurrentLocation" ColumnName="CurrentLocation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAYDSUserInformations">
+            <EntityTypeMapping TypeName="AtYourDoorStepModel.tblAYDSUserInformation">
+              <MappingFragment StoreEntitySet="tblAYDSUserInformation">
+                <ScalarProperty Name="UserInfoId" ColumnName="UserInfoId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAYDSUserLoginDetails">
+            <EntityTypeMapping TypeName="AtYourDoorStepModel.tblAYDSUserLoginDetail">
+              <MappingFragment StoreEntitySet="tblAYDSUserLoginDetail">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsVerified" ColumnName="IsVerified" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+                <ScalarProperty Name="IsActivated" ColumnName="IsActivated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

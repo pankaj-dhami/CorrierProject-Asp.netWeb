@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ed3bd69462c04440914f449e46f3391a" Name="Diagram1">
+        <EntityTypeShape EntityType="AtYourDoorStepModel.tblAYDSAddressInformation" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtYourDoorStepModel.tblAYDSAddressType" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtYourDoorStepModel.tblAYDSBookingDetail" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtYourDoorStepModel.tblAYDSBookingStatu" Width="1.5" PointX="5.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtYourDoorStepModel.tblAYDSCity" Width="1.5" PointX="5.25" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtYourDoorStepModel.tblAYDSCountry" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtYourDoorStepModel.tblAYDSParcelDetail" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtYourDoorStepModel.tblAYDSParcelType" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtYourDoorStepModel.tblAYDSState" Width="1.5" PointX="3" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtYourDoorStepModel.tblAYDSTrackingInformation" Width="1.5" PointX="7.5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtYourDoorStepModel.tblAYDSUserInformation" Width="1.5" PointX="7.5" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtYourDoorStepModel.tblAYDSUserLoginDetail" Width="1.5" PointX="0.75" PointY="11.875" IsExpanded="true" />
+        <AssociationConnector Association="AtYourDoorStepModel.FK_tblAYDSAddressInformation_tblAYDSAddressType" ManuallyRouted="false" />
+        <AssociationConnector Association="AtYourDoorStepModel.FK_tblAYDSAddressInformation_tblAYDSCity" ManuallyRouted="false" />
+        <AssociationConnector Association="AtYourDoorStepModel.FK_tblAYDSAddressInformation_tblAYDSCountry" ManuallyRouted="false" />
+        <AssociationConnector Association="AtYourDoorStepModel.FK_tblAYDSAddressInformation_tblAYDSUserLoginDetail" ManuallyRouted="false" />
+        <AssociationConnector Association="AtYourDoorStepModel.FK_tblAYDSBookingDetails_tblAYDSAddressInformation" ManuallyRouted="false" />
+        <AssociationConnector Association="AtYourDoorStepModel.FK_tblAYDSBookingDetails_tblAYDSAddressInformation1" ManuallyRouted="false" />
+        <AssociationConnector Association="AtYourDoorStepModel.FK_tblAYDSBookingDetails_tblAYDSParcelDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="AtYourDoorStepModel.FK_tblAYDSBookingDetails_tblAYDSUserLoginDetail" ManuallyRouted="false" />
+        <AssociationConnector Association="AtYourDoorStepModel.FK_tblAYDSTrackingInformation_tblAYDSBookingDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="AtYourDoorStepModel.FK_tblAYDSCity_tblAYDSCountry" ManuallyRouted="false" />
+        <AssociationConnector Association="AtYourDoorStepModel.FK_tblAYDSCity_tblAYDSState" ManuallyRouted="false" />
+        <AssociationConnector Association="AtYourDoorStepModel.FK_tblAYDSUserInformation_tblAYDSCity" ManuallyRouted="false" />
+        <AssociationConnector Association="AtYourDoorStepModel.FK_tblAYDSState_tblAYDSCountry" ManuallyRouted="false" />
+        <AssociationConnector Association="AtYourDoorStepModel.FK_tblAYDSUserInformation_tblAYDSCountry" ManuallyRouted="false" />
+        <AssociationConnector Association="AtYourDoorStepModel.FK_tblAYDSParcelDetails_tblAYDSParcelType" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
