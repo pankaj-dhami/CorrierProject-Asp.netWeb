@@ -1,11 +1,8 @@
-﻿using AYDS.BO;
-using AYDS.BO.BusinessObject;
+﻿using AYDS.BO.BusinessObject;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AYDS.Storage
 {
@@ -62,6 +59,35 @@ namespace AYDS.Storage
             {
             }
             return userDetails;
+        }
+        
+       /// <summary>
+       /// 
+       /// </summary>
+       /// <param name="userName"></param>
+       /// <returns></returns>
+        public bool ValidateEmailMobile(string userName)
+        {
+            tblAYDSUserLoginDetail userDetails = null;
+             bool result = true;
+            try
+            {
+                using (AtYourDoorStepEntities entity = new AtYourDoorStepEntities())
+                {
+                    if (userName.Contains('@'))
+                        userDetails = entity.tblAYDSUserLoginDetails.Where(a => a.EmailId == userName).FirstOrDefault();
+                    else
+                        userDetails = entity.tblAYDSUserLoginDetails.Where(a => a.MobileNumber == Convert.ToInt32(userName)).FirstOrDefault();
+
+                    if(userDetails.UserId > 0)
+                        result = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                result = false;
+            }
+            return result;
         }
 
         /// <summary>
@@ -234,5 +260,17 @@ namespace AYDS.Storage
             return result;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public List<tblAYDSCity> GetCityList()
+        {
+            List<tblAYDSCity> city = null;
+            using (AtYourDoorStepEntities entity = new AtYourDoorStepEntities())
+            {
+                city = entity.tblAYDSCities.Where(a => a.CityId > 0).ToList();
+            }
+            return city;
+        }
     }
 }
