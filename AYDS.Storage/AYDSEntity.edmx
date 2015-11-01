@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="AtYourDoorStepModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="AtYourDoorStepModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tblAYDSAddressInformation">
           <Key>
             <PropertyRef Name="AddressInfoId" />
@@ -132,6 +132,14 @@
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
           <Property Name="LastLogin" Type="datetime" Nullable="false" />
           <Property Name="IsActivated" Type="bit" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="DOB" Type="date" Nullable="false" />
+          <Property Name="MobileNumber" Type="int" Nullable="false" />
+          <Property Name="EmailId" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Country" Type="int" />
+          <Property Name="City" Type="int" />
+          <Property Name="CountryCode" Type="nvarchar" MaxLength="6" />
         </EntityType>
         <Association Name="FK_tblAYDSAddressInformation_tblAYDSAddressType">
           <End Role="tblAYDSAddressType" Type="Self.tblAYDSAddressType" Multiplicity="0..1" />
@@ -313,6 +321,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblAYDSUserLoginDetail_tblAYDSCity">
+          <End Role="tblAYDSCity" Type="Self.tblAYDSCity" Multiplicity="0..1" />
+          <End Role="tblAYDSUserLoginDetail" Type="Self.tblAYDSUserLoginDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAYDSCity">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="tblAYDSUserLoginDetail">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAYDSUserLoginDetail_tblAYDSCountry">
+          <End Role="tblAYDSCountry" Type="Self.tblAYDSCountry" Multiplicity="0..1" />
+          <End Role="tblAYDSUserLoginDetail" Type="Self.tblAYDSUserLoginDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAYDSCountry">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="tblAYDSUserLoginDetail">
+              <PropertyRef Name="Country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="AtYourDoorStepModelStoreContainer">
           <EntitySet Name="tblAYDSAddressInformation" EntityType="Self.tblAYDSAddressInformation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblAYDSAddressType" EntityType="Self.tblAYDSAddressType" Schema="dbo" store:Type="Tables" />
@@ -386,9 +418,16 @@
             <End Role="tblAYDSCountry" EntitySet="tblAYDSCountry" />
             <End Role="tblAYDSUserInformation" EntitySet="tblAYDSUserInformation" />
           </AssociationSet>
+          <AssociationSet Name="FK_tblAYDSUserLoginDetail_tblAYDSCity" Association="Self.FK_tblAYDSUserLoginDetail_tblAYDSCity">
+            <End Role="tblAYDSCity" EntitySet="tblAYDSCity" />
+            <End Role="tblAYDSUserLoginDetail" EntitySet="tblAYDSUserLoginDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAYDSUserLoginDetail_tblAYDSCountry" Association="Self.FK_tblAYDSUserLoginDetail_tblAYDSCountry">
+            <End Role="tblAYDSCountry" EntitySet="tblAYDSCountry" />
+            <End Role="tblAYDSUserLoginDetail" EntitySet="tblAYDSUserLoginDetail" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AtYourDoorStepModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -464,6 +503,7 @@
           <NavigationProperty Name="tblAYDSCountry" Relationship="Self.FK_tblAYDSCity_tblAYDSCountry" FromRole="tblAYDSCity" ToRole="tblAYDSCountry" />
           <NavigationProperty Name="tblAYDSState" Relationship="Self.FK_tblAYDSCity_tblAYDSState" FromRole="tblAYDSCity" ToRole="tblAYDSState" />
           <NavigationProperty Name="tblAYDSUserInformations" Relationship="Self.FK_tblAYDSUserInformation_tblAYDSCity" FromRole="tblAYDSCity" ToRole="tblAYDSUserInformation" />
+          <NavigationProperty Name="tblAYDSUserLoginDetails" Relationship="AtYourDoorStepModel.FK_tblAYDSUserLoginDetail_tblAYDSCity" FromRole="tblAYDSCity" ToRole="tblAYDSUserLoginDetail" />
         </EntityType>
         <EntityType Name="tblAYDSCountry">
           <Key>
@@ -477,6 +517,7 @@
           <NavigationProperty Name="tblAYDSCities" Relationship="Self.FK_tblAYDSCity_tblAYDSCountry" FromRole="tblAYDSCountry" ToRole="tblAYDSCity" />
           <NavigationProperty Name="tblAYDSStates" Relationship="Self.FK_tblAYDSState_tblAYDSCountry" FromRole="tblAYDSCountry" ToRole="tblAYDSState" />
           <NavigationProperty Name="tblAYDSUserInformations" Relationship="Self.FK_tblAYDSUserInformation_tblAYDSCountry" FromRole="tblAYDSCountry" ToRole="tblAYDSUserInformation" />
+          <NavigationProperty Name="tblAYDSUserLoginDetails" Relationship="AtYourDoorStepModel.FK_tblAYDSUserLoginDetail_tblAYDSCountry" FromRole="tblAYDSCountry" ToRole="tblAYDSUserLoginDetail" />
         </EntityType>
         <EntityType Name="tblAYDSParcelDetail">
           <Key>
@@ -549,6 +590,16 @@
           <Property Name="IsActivated" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="tblAYDSAddressInformations" Relationship="Self.FK_tblAYDSAddressInformation_tblAYDSUserLoginDetail" FromRole="tblAYDSUserLoginDetail" ToRole="tblAYDSAddressInformation" />
           <NavigationProperty Name="tblAYDSBookingDetails" Relationship="Self.FK_tblAYDSBookingDetails_tblAYDSUserLoginDetail" FromRole="tblAYDSUserLoginDetail" ToRole="tblAYDSBookingDetails" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="MobileNumber" Type="Int32" Nullable="false" />
+          <Property Name="EmailId" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="Int32" />
+          <Property Name="City" Type="Int32" />
+          <Property Name="CountryCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblAYDSCity" Relationship="AtYourDoorStepModel.FK_tblAYDSUserLoginDetail_tblAYDSCity" FromRole="tblAYDSUserLoginDetail" ToRole="tblAYDSCity" />
+          <NavigationProperty Name="tblAYDSCountry" Relationship="AtYourDoorStepModel.FK_tblAYDSUserLoginDetail_tblAYDSCountry" FromRole="tblAYDSUserLoginDetail" ToRole="tblAYDSCountry" />
         </EntityType>
         <Association Name="FK_tblAYDSAddressInformation_tblAYDSAddressType">
           <End Role="tblAYDSAddressType" Type="Self.tblAYDSAddressType" Multiplicity="0..1" />
@@ -803,7 +854,39 @@
             <End Role="tblAYDSParcelType" EntitySet="tblAYDSParcelTypes" />
             <End Role="tblAYDSParcelDetails" EntitySet="tblAYDSParcelDetails" />
           </AssociationSet>
+          <AssociationSet Name="FK_tblAYDSUserLoginDetail_tblAYDSCity" Association="AtYourDoorStepModel.FK_tblAYDSUserLoginDetail_tblAYDSCity">
+            <End Role="tblAYDSCity" EntitySet="tblAYDSCities" />
+            <End Role="tblAYDSUserLoginDetail" EntitySet="tblAYDSUserLoginDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAYDSUserLoginDetail_tblAYDSCountry" Association="AtYourDoorStepModel.FK_tblAYDSUserLoginDetail_tblAYDSCountry">
+            <End Role="tblAYDSCountry" EntitySet="tblAYDSCountries" />
+            <End Role="tblAYDSUserLoginDetail" EntitySet="tblAYDSUserLoginDetails" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_tblAYDSUserLoginDetail_tblAYDSCity">
+          <End Type="AtYourDoorStepModel.tblAYDSCity" Role="tblAYDSCity" Multiplicity="0..1" />
+          <End Type="AtYourDoorStepModel.tblAYDSUserLoginDetail" Role="tblAYDSUserLoginDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAYDSCity">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="tblAYDSUserLoginDetail">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAYDSUserLoginDetail_tblAYDSCountry">
+          <End Type="AtYourDoorStepModel.tblAYDSCountry" Role="tblAYDSCountry" Multiplicity="0..1" />
+          <End Type="AtYourDoorStepModel.tblAYDSUserLoginDetail" Role="tblAYDSUserLoginDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAYDSCountry">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="tblAYDSUserLoginDetail">
+              <PropertyRef Name="Country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -940,6 +1023,14 @@
           <EntitySetMapping Name="tblAYDSUserLoginDetails">
             <EntityTypeMapping TypeName="AtYourDoorStepModel.tblAYDSUserLoginDetail">
               <MappingFragment StoreEntitySet="tblAYDSUserLoginDetail">
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Password" ColumnName="Password" />

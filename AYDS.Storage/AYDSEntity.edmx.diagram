@@ -32,6 +32,8 @@
         <AssociationConnector Association="AtYourDoorStepModel.FK_tblAYDSState_tblAYDSCountry" ManuallyRouted="false" />
         <AssociationConnector Association="AtYourDoorStepModel.FK_tblAYDSUserInformation_tblAYDSCountry" ManuallyRouted="false" />
         <AssociationConnector Association="AtYourDoorStepModel.FK_tblAYDSParcelDetails_tblAYDSParcelType" ManuallyRouted="false" />
+        <AssociationConnector Association="AtYourDoorStepModel.FK_tblAYDSUserLoginDetail_tblAYDSCity" />
+        <AssociationConnector Association="AtYourDoorStepModel.FK_tblAYDSUserLoginDetail_tblAYDSCountry" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -18,6 +18,7 @@ namespace AYDS.Storage
         {
             this.tblAYDSAddressInformations = new HashSet<tblAYDSAddressInformation>();
             this.tblAYDSUserInformations = new HashSet<tblAYDSUserInformation>();
+            this.tblAYDSUserLoginDetails = new HashSet<tblAYDSUserLoginDetail>();
         }
     
         public int CityId { get; set; }
@@ -30,5 +31,6 @@ namespace AYDS.Storage
         public virtual tblAYDSCountry tblAYDSCountry { get; set; }
         public virtual tblAYDSState tblAYDSState { get; set; }
         public virtual ICollection<tblAYDSUserInformation> tblAYDSUserInformations { get; set; }
+        public virtual ICollection<tblAYDSUserLoginDetail> tblAYDSUserLoginDetails { get; set; }
     }
 }
