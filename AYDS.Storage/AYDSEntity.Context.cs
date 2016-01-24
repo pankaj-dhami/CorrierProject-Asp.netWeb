@@ -12,6 +12,8 @@ namespace AYDS.Storage
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class AtYourDoorStepEntities : DbContext
     {
@@ -36,6 +38,14 @@ namespace AYDS.Storage
         public virtual DbSet<tblAYDSState> tblAYDSStates { get; set; }
         public virtual DbSet<tblAYDSTrackingInformation> tblAYDSTrackingInformations { get; set; }
         public virtual DbSet<tblAYDSUserInformation> tblAYDSUserInformations { get; set; }
-        public virtual DbSet<tblAYDSUserLoginDetail> tblAYDSUserLoginDetails { get; set; }
+    
+        public virtual ObjectResult<GetBookingHistory_Result> GetBookingHistory(Nullable<int> userId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetBookingHistory_Result>("GetBookingHistory", userIdParameter);
+        }
     }
 }

@@ -39,7 +39,7 @@ namespace AYDS.Storage
         public virtual tblAYDSAddressType tblAYDSAddressType { get; set; }
         public virtual tblAYDSCity tblAYDSCity { get; set; }
         public virtual tblAYDSCountry tblAYDSCountry { get; set; }
-        public virtual tblAYDSUserLoginDetail tblAYDSUserLoginDetail { get; set; }
+        public virtual tblAYDSUserInformation tblAYDSUserInformation { get; set; }
         public virtual ICollection<tblAYDSBookingDetail> tblAYDSBookingDetails { get; set; }
         public virtual ICollection<tblAYDSBookingDetail> tblAYDSBookingDetails1 { get; set; }
     }

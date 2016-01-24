@@ -31,7 +31,7 @@ namespace AYDS.Storage
         public virtual tblAYDSAddressInformation tblAYDSAddressInformation { get; set; }
         public virtual tblAYDSAddressInformation tblAYDSAddressInformation1 { get; set; }
         public virtual tblAYDSParcelDetail tblAYDSParcelDetail { get; set; }
-        public virtual tblAYDSUserLoginDetail tblAYDSUserLoginDetail { get; set; }
+        public virtual tblAYDSUserInformation tblAYDSUserInformation { get; set; }
         public virtual ICollection<tblAYDSTrackingInformation> tblAYDSTrackingInformations { get; set; }
     }
 }

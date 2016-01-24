@@ -64,6 +64,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AYDSEntity.edmx</DependentUpon>
     </Compile>
+    <Compile Include="GetBookingHistory_Result.cs">
+      <DependentUpon>AYDSEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="tblAYDSAddressInformation.cs">
       <DependentUpon>AYDSEntity.tt</DependentUpon>
@@ -96,9 +99,6 @@
       <DependentUpon>AYDSEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="tblAYDSUserInformation.cs">
-      <DependentUpon>AYDSEntity.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tblAYDSUserLoginDetail.cs">
       <DependentUpon>AYDSEntity.tt</DependentUpon>
     </Compile>
   </ItemGroup>

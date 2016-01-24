@@ -14,17 +14,29 @@ namespace AYDS.Storage
     
     public partial class tblAYDSUserInformation
     {
-        public int UserInfoId { get; set; }
+        public tblAYDSUserInformation()
+        {
+            this.tblAYDSAddressInformations = new HashSet<tblAYDSAddressInformation>();
+            this.tblAYDSBookingDetails = new HashSet<tblAYDSBookingDetail>();
+        }
+    
         public int UserId { get; set; }
+        public string Password { get; set; }
+        public bool IsVerified { get; set; }
+        public System.DateTime CreatedOn { get; set; }
+        public Nullable<System.DateTime> LastLogin { get; set; }
+        public bool IsActivated { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public System.DateTime DOB { get; set; }
+        public Nullable<System.DateTime> DOB { get; set; }
         public int MobileNumber { get; set; }
         public string EmailId { get; set; }
         public Nullable<int> Country { get; set; }
         public Nullable<int> City { get; set; }
         public string CountryCode { get; set; }
     
+        public virtual ICollection<tblAYDSAddressInformation> tblAYDSAddressInformations { get; set; }
+        public virtual ICollection<tblAYDSBookingDetail> tblAYDSBookingDetails { get; set; }
         public virtual tblAYDSCity tblAYDSCity { get; set; }
         public virtual tblAYDSCountry tblAYDSCountry { get; set; }
     }
