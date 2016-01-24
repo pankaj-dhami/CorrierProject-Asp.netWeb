@@ -13,17 +13,17 @@ namespace AYDS.Storage
         /// </summary>
         /// <param name="userName">EmailId / Mobile No</param>
         /// <param name="password">Pasword can be email or mobile no</param>
-        public tblAYDSUserLoginDetail ValidateUser(string userName, string password)
+        public tblAYDSUserInformation ValidateUser(string userName, string password)
         {
-            tblAYDSUserLoginDetail userDetails = null;
+            tblAYDSUserInformation userDetails = null;
             try
             {
                 using (AtYourDoorStepEntities entity = new AtYourDoorStepEntities())
                 {
                     if (userName.Contains('@'))
-                        userDetails = entity.tblAYDSUserLoginDetails.Where(a => a.Password == password && a.EmailId == userName).FirstOrDefault();
+                        userDetails = entity.tblAYDSUserInformations.Where(a => a.Password == password && a.EmailId == userName).FirstOrDefault();
                     else
-                        userDetails = entity.tblAYDSUserLoginDetails.Where(a => a.Password == password && a.MobileNumber == Convert.ToInt32(userName)).FirstOrDefault();
+                        userDetails = entity.tblAYDSUserInformations.Where(a => a.Password == password && a.MobileNumber == Convert.ToInt32(userName)).FirstOrDefault();
                     //On login update last login time 
                     userDetails.LastLogin = DateTime.UtcNow;
                     entity.SaveChanges();
@@ -39,7 +39,7 @@ namespace AYDS.Storage
         /// 
         /// </summary>
         /// <param name="userDetails"></param>
-        public tblAYDSUserLoginDetail RegisterUser(tblAYDSUserLoginDetail userDetails)
+        public tblAYDSUserInformation RegisterUser(tblAYDSUserInformation userDetails)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace AYDS.Storage
                     userDetails.IsActivated = false;
                     userDetails.CreatedOn = DateTime.UtcNow;
                     userDetails.LastLogin = DateTime.UtcNow;
-                    entity.tblAYDSUserLoginDetails.Add(userDetails);
+                    entity.tblAYDSUserInformations.Add(userDetails);
                     entity.SaveChanges();
                     //Generte & SEND OTP
                     GenerateOTP(userDetails.MobileNumber, userDetails.UserId);
@@ -68,16 +68,16 @@ namespace AYDS.Storage
        /// <returns></returns>
         public bool ValidateEmailMobile(string userName)
         {
-            tblAYDSUserLoginDetail userDetails = null;
+            tblAYDSUserInformation userDetails = null;
              bool result = true;
             try
             {
                 using (AtYourDoorStepEntities entity = new AtYourDoorStepEntities())
                 {
                     if (userName.Contains('@'))
-                        userDetails = entity.tblAYDSUserLoginDetails.Where(a => a.EmailId == userName).FirstOrDefault();
+                        userDetails = entity.tblAYDSUserInformations.Where(a => a.EmailId == userName).FirstOrDefault();
                     else
-                        userDetails = entity.tblAYDSUserLoginDetails.Where(a => a.MobileNumber == Convert.ToInt32(userName)).FirstOrDefault();
+                        userDetails = entity.tblAYDSUserInformations.Where(a => a.MobileNumber == Convert.ToInt32(userName)).FirstOrDefault();
 
                     if(userDetails.UserId > 0)
                         result = false;
@@ -165,13 +165,13 @@ namespace AYDS.Storage
         /// 
         /// </summary>
         /// <param name="userDetails"></param>
-        public tblAYDSUserLoginDetail UpdateUserDetails(tblAYDSUserLoginDetail userDetails)
+        public tblAYDSUserInformation UpdateUserDetails(tblAYDSUserInformation userDetails)
         {
             try
             {
                 using (AtYourDoorStepEntities entity = new AtYourDoorStepEntities())
                 {
-                    entity.tblAYDSUserLoginDetails.Attach(userDetails);
+                    entity.tblAYDSUserInformations.Attach(userDetails);
                     entity.Entry(userDetails).State = EntityState.Modified;
                     entity.SaveChanges();
                 }
@@ -187,14 +187,14 @@ namespace AYDS.Storage
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
-        public tblAYDSUserLoginDetail GetUserProfile(int userId)
+        public tblAYDSUserInformation GetUserProfile(int userId)
         {
-            tblAYDSUserLoginDetail userDetails = null;
+            tblAYDSUserInformation userDetails = null;
             try
             {
                 using (AtYourDoorStepEntities entity = new AtYourDoorStepEntities())
                 {
-                    userDetails = entity.tblAYDSUserLoginDetails.Where(a => a.UserId == userId).FirstOrDefault();
+                    userDetails = entity.tblAYDSUserInformations.Where(a => a.UserId == userId).FirstOrDefault();
                 }
             }
             catch (Exception ex)

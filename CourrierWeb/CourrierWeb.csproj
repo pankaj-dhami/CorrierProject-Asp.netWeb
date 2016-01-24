@@ -256,6 +256,14 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AYDS.BO\AYDS.BO.csproj">
+      <Project>{07f5b88e-0a98-40f4-8bdb-660aa49119c6}</Project>
+      <Name>AYDS.BO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AYDS.Storage\AYDS.Storage.csproj">
+      <Project>{5eca20fa-fe55-4071-9293-63b45f482b67}</Project>
+      <Name>AYDS.Storage</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CourrierBO\CourrierBO.csproj">
       <Project>{076209bc-35cb-4ed4-bf06-ce6495ed0bac}</Project>
       <Name>CourrierBO</Name>
