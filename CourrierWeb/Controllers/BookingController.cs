@@ -1,4 +1,5 @@
-﻿using AYDS.Storage;
+﻿using AYDS.BO;
+using AYDS.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,7 @@ namespace CourrierWeb.Controllers
             return addressId;
         }
 
-        public bool PostAddress(tblAYDSAddressInformation senderAddress, tblAYDSAddressInformation recieverAddress, int userId, int parcleType)
+        public bool PostBookParcle(tblAYDSAddressInformation senderAddress, tblAYDSAddressInformation recieverAddress, int userId, int parcleType)
         {
             bool resulr;
             if (!ModelState.IsValid)
@@ -43,11 +44,33 @@ namespace CourrierWeb.Controllers
         #endregion
 
         #region FareCalculator
-        
+        // GET api/GetFareDetails
+        public IEnumerable<FareDetails> GetFareDetails()
+        {
+            var fareDetails = dal.CheckFare();
+            if (fareDetails == null || !fareDetails.Any())
+            {
+                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
+            }
+
+            return fareDetails;
+        }
         #endregion
 
         #region TrackingAndHistory
-        
+        // GET api/GetBookingHistory/5
+        public IEnumerable<BookingHistory> GetBookingHistory(int userId) 
+        {
+            var bookingHistory = dal.GetBookingHistory(userId);
+            if (bookingHistory == null || !bookingHistory.Any())
+            {
+                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
+            }
+
+            return bookingHistory;
+        }
+
+
         #endregion
     }
 }

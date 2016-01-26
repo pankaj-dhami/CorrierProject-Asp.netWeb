@@ -8,6 +8,7 @@ using AYDS.Storage;
 
 namespace CourrierWeb.Controllers
 {
+    //Get: Get result, PUT: Update, POST: New Entry, DELETE: Delete entry
     public class UserController : ApiController
     {
         private AtYourDoorStepEntities db = new AtYourDoorStepEntities();
