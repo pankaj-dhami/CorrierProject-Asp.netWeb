@@ -1,4 +1,4 @@
-﻿using AYDS.BO.BusinessObject;
+﻿using AYDS.BO;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -6,8 +6,9 @@ using System.Linq;
 
 namespace AYDS.Storage
 {
-    class AYDSDAL
+    public class AYDSDAL
     {
+        #region User
         /// <summary>
         /// 
         /// </summary>
@@ -43,16 +44,23 @@ namespace AYDS.Storage
         {
             try
             {
-                using (AtYourDoorStepEntities entity = new AtYourDoorStepEntities())
+                if (ValidateEmailMobile(userDetails.MobileNumber, userDetails.EmailId))
                 {
-                    userDetails.IsVerified = false;
-                    userDetails.IsActivated = false;
-                    userDetails.CreatedOn = DateTime.UtcNow;
-                    userDetails.LastLogin = DateTime.UtcNow;
-                    entity.tblAYDSUserInformations.Add(userDetails);
-                    entity.SaveChanges();
-                    //Generte & SEND OTP
-                    GenerateOTP(userDetails.MobileNumber, userDetails.UserId);
+                    using (AtYourDoorStepEntities entity = new AtYourDoorStepEntities())
+                    {
+                        userDetails.IsVerified = false;
+                        userDetails.IsActivated = false;
+                        userDetails.CreatedOn = DateTime.UtcNow;
+                        userDetails.LastLogin = DateTime.UtcNow;
+                        entity.tblAYDSUserInformations.Add(userDetails);
+                        entity.SaveChanges();
+                        //Generte & SEND OTP
+                        GenerateOTP(userDetails.MobileNumber, userDetails.Id);
+                    }
+                }
+                else
+                {
+
                 }
             }
             catch (Exception ex)
@@ -60,26 +68,23 @@ namespace AYDS.Storage
             }
             return userDetails;
         }
-        
-       /// <summary>
-       /// 
-       /// </summary>
-       /// <param name="userName"></param>
-       /// <returns></returns>
-        public bool ValidateEmailMobile(string userName)
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns></returns>
+        public bool ValidateEmailMobile(int mobileNumber, string emailId)
         {
             tblAYDSUserInformation userDetails = null;
-             bool result = true;
+            bool result = true;
             try
             {
                 using (AtYourDoorStepEntities entity = new AtYourDoorStepEntities())
                 {
-                    if (userName.Contains('@'))
-                        userDetails = entity.tblAYDSUserInformations.Where(a => a.EmailId == userName).FirstOrDefault();
-                    else
-                        userDetails = entity.tblAYDSUserInformations.Where(a => a.MobileNumber == Convert.ToInt32(userName)).FirstOrDefault();
+                    userDetails = entity.tblAYDSUserInformations.Where(a => a.EmailId == emailId || a.MobileNumber == mobileNumber).FirstOrDefault();
 
-                    if(userDetails.UserId > 0)
+                    if (userDetails.Id > 0)
                         result = false;
                 }
             }
@@ -94,17 +99,53 @@ namespace AYDS.Storage
         /// 
         /// </summary>
         /// <param name="userId"></param>
-        /// <param name="OTP"></param>
-        public void ConfirmOTP(int userId, int OTP)
+        /// <returns></returns>
+        public tblAYDSUserInformation GetUserProfile(int userId)
         {
+            tblAYDSUserInformation userDetails = null;
+            try
+            {
+                using (AtYourDoorStepEntities entity = new AtYourDoorStepEntities())
+                {
+                    userDetails = entity.tblAYDSUserInformations.Where(a => a.Id == userId).FirstOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            return userDetails;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public void CheckFare()
+        /// <param name="userDetails"></param>
+        public tblAYDSUserInformation UpdateUserDetails(tblAYDSUserInformation userDetails)
         {
-
+            try
+            {
+                using (AtYourDoorStepEntities entity = new AtYourDoorStepEntities())
+                {
+                    entity.tblAYDSUserInformations.Attach(userDetails);
+                    entity.Entry(userDetails).State = EntityState.Modified;
+                    entity.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            return userDetails;
+        }
+        #endregion       
+             
+        #region Booking
+        /// <summary>
+        /// 
+        /// </summary>
+        public List<FareDetails> CheckFare()
+        {
+            List<FareDetails> fareDetails =null;
+            return fareDetails;
         }
 
         /// <summary>
@@ -120,7 +161,7 @@ namespace AYDS.Storage
                 {
                     entity.tblAYDSAddressInformations.Add(address);
                     entity.SaveChanges();
-                    result = address.AddressInfoId;
+                    result = address.Id;
                 }
             }
             catch (Exception ex)
@@ -130,6 +171,55 @@ namespace AYDS.Storage
             return result;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="senderAddress"></param>
+        /// <param name="recieverAddress"></param>
+        /// <param name="userId"></param>
+        /// <param name="parcleType"></param>
+        /// <returns></returns>
+        public bool BookParcle(tblAYDSAddressInformation senderAddress, tblAYDSAddressInformation recieverAddress, int userId, int parcleType)
+        {
+            bool result = false;
+            int senderId;
+            int recieverId;
+            tblAYDSBookingDetail bookingDetails = null;
+            try
+            {
+                using (AtYourDoorStepEntities entity = new AtYourDoorStepEntities())
+                {
+                    if (senderAddress.Id == 0)
+                        senderId = SaveAddress(senderAddress);
+                    else
+                        senderId = senderAddress.Id;
+
+                    if (recieverAddress.Id == 0)
+                        recieverId = SaveAddress(recieverAddress);
+                    else
+                        recieverId = recieverAddress.Id;
+
+                    //Booking Details
+                    bookingDetails.UserId = userId;
+                    bookingDetails.RecieverId = recieverId;
+                    bookingDetails.SenderId = senderId;
+                    bookingDetails.ParcleType = parcleType;
+                    bookingDetails.BookingDateTime = DateTime.UtcNow;
+                    bookingDetails.BookingStatus = 1;
+                    entity.tblAYDSBookingDetails.Add(bookingDetails);
+                    entity.SaveChanges();
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                result = false;
+            }
+            return result;
+        }
+        #endregion       
+
+        #region TrackingAndHistory
         /// <summary>
         /// 
         /// </summary>
@@ -153,54 +243,28 @@ namespace AYDS.Storage
             return bookingHistory;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void ViewBookingDetails()
-        {
-        }
-
-        public void TrckCourrier()
         {
         }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="userDetails"></param>
-        public tblAYDSUserInformation UpdateUserDetails(tblAYDSUserInformation userDetails)
+        public void TrckCourrier()
         {
-            try
-            {
-                using (AtYourDoorStepEntities entity = new AtYourDoorStepEntities())
-                {
-                    entity.tblAYDSUserInformations.Attach(userDetails);
-                    entity.Entry(userDetails).State = EntityState.Modified;
-                    entity.SaveChanges();
-                }
-            }
-            catch (Exception ex)
-            {
-            }
-            return userDetails;
-        }
+        } 
+        #endregion
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="userId"></param>
-        /// <returns></returns>
-        public tblAYDSUserInformation GetUserProfile(int userId)
+        /// <param name="OTP"></param>
+        public void ConfirmOTP(int userId, int OTP)
         {
-            tblAYDSUserInformation userDetails = null;
-            try
-            {
-                using (AtYourDoorStepEntities entity = new AtYourDoorStepEntities())
-                {
-                    userDetails = entity.tblAYDSUserInformations.Where(a => a.UserId == userId).FirstOrDefault();
-                }
-            }
-            catch (Exception ex)
-            {
-            }
-            return userDetails;
         }
 
         /// <summary>
@@ -211,54 +275,7 @@ namespace AYDS.Storage
         public void GenerateOTP(int mobileNo, int userId)
         {
 
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="senderAddress"></param>
-        /// <param name="recieverAddress"></param>
-        /// <param name="userId"></param>
-        /// <param name="parcleType"></param>
-        /// <returns></returns>
-        public bool BookParcle(tblAYDSAddressInformation senderAddress, tblAYDSAddressInformation recieverAddress, int userId, int parcleType)
-        {
-            bool result = false;
-            int senderId;
-            int recieverId;
-            tblAYDSBookingDetail bookingDetails = null;
-            try
-            {
-                using (AtYourDoorStepEntities entity = new AtYourDoorStepEntities())
-                {
-                    if (senderAddress.AddressInfoId == 0)
-                        senderId = SaveAddress(senderAddress);
-                    else
-                        senderId = senderAddress.AddressInfoId;
-
-                    if (recieverAddress.AddressInfoId == 0)
-                        recieverId = SaveAddress(recieverAddress);
-                    else
-                        recieverId = recieverAddress.AddressInfoId;
-
-                    //Booking Details
-                    bookingDetails.UserId = userId;
-                    bookingDetails.RecieverId = recieverId;
-                    bookingDetails.SenderId = senderId;
-                    bookingDetails.ParcleType = parcleType;
-                    bookingDetails.BookingDateTime = DateTime.UtcNow;
-                    bookingDetails.BookingStatus = 1;
-                    entity.tblAYDSBookingDetails.Add(bookingDetails);
-                    entity.SaveChanges();
-                    result = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                result = false;
-            }
-            return result;
-        }
+        }      
 
         /// <summary>
         /// 
@@ -268,7 +285,7 @@ namespace AYDS.Storage
             List<tblAYDSCity> city = null;
             using (AtYourDoorStepEntities entity = new AtYourDoorStepEntities())
             {
-                city = entity.tblAYDSCities.Where(a => a.CityId > 0).ToList();
+                city = entity.tblAYDSCities.Where(a => a.Id > 0).ToList();
             }
             return city;
         }

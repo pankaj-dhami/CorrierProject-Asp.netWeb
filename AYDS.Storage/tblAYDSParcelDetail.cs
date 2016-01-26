@@ -19,7 +19,7 @@ namespace AYDS.Storage
             this.tblAYDSBookingDetails = new HashSet<tblAYDSBookingDetail>();
         }
     
-        public int ParcelId { get; set; }
+        public int Id { get; set; }
         public int ParcelType { get; set; }
         public Nullable<decimal> Weight { get; set; }
         public Nullable<decimal> Width { get; set; }

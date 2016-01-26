@@ -14,7 +14,7 @@ namespace AYDS.Storage
     
     public partial class tblAYDSBookingStatu
     {
-        public int BookingStatusId { get; set; }
+        public int Id { get; set; }
         public string BookingStatus { get; set; }
     }
 }

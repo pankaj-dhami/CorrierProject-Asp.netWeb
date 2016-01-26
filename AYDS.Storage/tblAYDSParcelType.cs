@@ -19,7 +19,7 @@ namespace AYDS.Storage
             this.tblAYDSParcelDetails = new HashSet<tblAYDSParcelDetail>();
         }
     
-        public int ParcleTypeId { get; set; }
+        public int Id { get; set; }
         public string ParcleType { get; set; }
     
         public virtual ICollection<tblAYDSParcelDetail> tblAYDSParcelDetails { get; set; }

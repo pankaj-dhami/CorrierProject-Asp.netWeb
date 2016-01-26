@@ -20,7 +20,7 @@ namespace AYDS.Storage
             this.tblAYDSBookingDetails = new HashSet<tblAYDSBookingDetail>();
         }
     
-        public int UserId { get; set; }
+        public int Id { get; set; }
         public string Password { get; set; }
         public bool IsVerified { get; set; }
         public System.DateTime CreatedOn { get; set; }

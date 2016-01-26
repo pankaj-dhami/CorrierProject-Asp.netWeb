@@ -14,7 +14,7 @@ namespace AYDS.Storage
     
     public partial class tblAYDSTrackingInformation
     {
-        public int TrackingId { get; set; }
+        public int Id { get; set; }
         public string BookingId { get; set; }
         public System.DateTime CurrentStateDateTime { get; set; }
         public string CurrentLocation { get; set; }

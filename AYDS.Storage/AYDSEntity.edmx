@@ -7,9 +7,9 @@
     <Schema Namespace="AtYourDoorStepModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tblAYDSAddressInformation">
           <Key>
-            <PropertyRef Name="AddressInfoId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="AddressInfoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" />
           <Property Name="AddressType" Type="int" />
           <Property Name="FirstName" Type="varchar" MaxLength="150" />
@@ -27,16 +27,16 @@
         </EntityType>
         <EntityType Name="tblAYDSAddressType">
           <Key>
-            <PropertyRef Name="AddressTypeId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="AddressTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="AddressType" Type="varchar" MaxLength="150" Nullable="false" />
         </EntityType>
         <EntityType Name="tblAYDSBookingDetails">
           <Key>
-            <PropertyRef Name="BookingId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="BookingId" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="Id" Type="nchar" MaxLength="100" Nullable="false" />
           <Property Name="UserId" Type="int" />
           <Property Name="SenderId" Type="int" />
           <Property Name="RecieverId" Type="int" />
@@ -47,16 +47,16 @@
         </EntityType>
         <EntityType Name="tblAYDSBookingStatus">
           <Key>
-            <PropertyRef Name="BookingStatusId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="BookingStatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="BookingStatus" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tblAYDSCity">
           <Key>
-            <PropertyRef Name="CityId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="CityId" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="City" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="Country" Type="int" Nullable="false" />
           <Property Name="State" Type="int" Nullable="false" />
@@ -64,18 +64,18 @@
         </EntityType>
         <EntityType Name="tblAYDSCountry">
           <Key>
-            <PropertyRef Name="CountryId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="CountryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Country" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="CountryCode" Type="nvarchar" MaxLength="6" />
           <Property Name="CountryShortCode" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="tblAYDSParcelDetails">
           <Key>
-            <PropertyRef Name="ParcelId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ParcelId" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="ParcelType" Type="int" Nullable="false" />
           <Property Name="Weight" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Width" Type="decimal" Precision="18" Scale="2" />
@@ -84,33 +84,33 @@
         </EntityType>
         <EntityType Name="tblAYDSParcelType">
           <Key>
-            <PropertyRef Name="ParcleTypeId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ParcleTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ParcleType" Type="varchar" MaxLength="150" Nullable="false" />
         </EntityType>
         <EntityType Name="tblAYDSState">
           <Key>
-            <PropertyRef Name="StateId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="StateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="StateName" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="Country" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="tblAYDSTrackingInformation">
           <Key>
-            <PropertyRef Name="TrackingId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="TrackingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="BookingId" Type="nchar" MaxLength="100" Nullable="false" />
           <Property Name="CurrentStateDateTime" Type="date" Nullable="false" />
           <Property Name="CurrentLocation" Type="varchar" MaxLength="1050" Nullable="false" />
         </EntityType>
         <EntityType Name="tblAYDSUserInformation">
           <Key>
-            <PropertyRef Name="UserId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="400" Nullable="false" />
           <Property Name="IsVerified" Type="bit" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
@@ -130,7 +130,7 @@
           <End Role="tblAYDSAddressInformation" Type="Self.tblAYDSAddressInformation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblAYDSAddressType">
-              <PropertyRef Name="AddressTypeId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="tblAYDSAddressInformation">
               <PropertyRef Name="AddressType" />
@@ -142,7 +142,7 @@
           <End Role="tblAYDSAddressInformation" Type="Self.tblAYDSAddressInformation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblAYDSCity">
-              <PropertyRef Name="CityId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="tblAYDSAddressInformation">
               <PropertyRef Name="City" />
@@ -154,7 +154,7 @@
           <End Role="tblAYDSAddressInformation" Type="Self.tblAYDSAddressInformation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblAYDSCountry">
-              <PropertyRef Name="CountryId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="tblAYDSAddressInformation">
               <PropertyRef Name="Country" />
@@ -166,7 +166,7 @@
           <End Role="tblAYDSAddressInformation" Type="Self.tblAYDSAddressInformation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblAYDSUserInformation">
-              <PropertyRef Name="UserId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="tblAYDSAddressInformation">
               <PropertyRef Name="UserId" />
@@ -178,7 +178,7 @@
           <End Role="tblAYDSBookingDetails" Type="Self.tblAYDSBookingDetails" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblAYDSAddressInformation">
-              <PropertyRef Name="AddressInfoId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="tblAYDSBookingDetails">
               <PropertyRef Name="RecieverId" />
@@ -190,7 +190,7 @@
           <End Role="tblAYDSBookingDetails" Type="Self.tblAYDSBookingDetails" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblAYDSAddressInformation">
-              <PropertyRef Name="AddressInfoId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="tblAYDSBookingDetails">
               <PropertyRef Name="SenderId" />
@@ -202,7 +202,7 @@
           <End Role="tblAYDSBookingDetails" Type="Self.tblAYDSBookingDetails" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblAYDSParcelDetails">
-              <PropertyRef Name="ParcelId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="tblAYDSBookingDetails">
               <PropertyRef Name="ParcleType" />
@@ -214,7 +214,7 @@
           <End Role="tblAYDSBookingDetails" Type="Self.tblAYDSBookingDetails" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblAYDSUserInformation">
-              <PropertyRef Name="UserId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="tblAYDSBookingDetails">
               <PropertyRef Name="UserId" />
@@ -226,7 +226,7 @@
           <End Role="tblAYDSCity" Type="Self.tblAYDSCity" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblAYDSCountry">
-              <PropertyRef Name="CountryId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="tblAYDSCity">
               <PropertyRef Name="Country" />
@@ -238,7 +238,7 @@
           <End Role="tblAYDSCity" Type="Self.tblAYDSCity" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblAYDSState">
-              <PropertyRef Name="StateId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="tblAYDSCity">
               <PropertyRef Name="State" />
@@ -250,7 +250,7 @@
           <End Role="tblAYDSParcelDetails" Type="Self.tblAYDSParcelDetails" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblAYDSParcelType">
-              <PropertyRef Name="ParcleTypeId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="tblAYDSParcelDetails">
               <PropertyRef Name="ParcelType" />
@@ -262,7 +262,7 @@
           <End Role="tblAYDSState" Type="Self.tblAYDSState" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblAYDSCountry">
-              <PropertyRef Name="CountryId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="tblAYDSState">
               <PropertyRef Name="Country" />
@@ -274,7 +274,7 @@
           <End Role="tblAYDSTrackingInformation" Type="Self.tblAYDSTrackingInformation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblAYDSBookingDetails">
-              <PropertyRef Name="BookingId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="tblAYDSTrackingInformation">
               <PropertyRef Name="BookingId" />
@@ -286,7 +286,7 @@
           <End Role="tblAYDSUserInformation" Type="Self.tblAYDSUserInformation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblAYDSCity">
-              <PropertyRef Name="CityId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="tblAYDSUserInformation">
               <PropertyRef Name="City" />
@@ -298,7 +298,7 @@
           <End Role="tblAYDSUserInformation" Type="Self.tblAYDSUserInformation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblAYDSCountry">
-              <PropertyRef Name="CountryId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="tblAYDSUserInformation">
               <PropertyRef Name="Country" />
@@ -473,9 +473,9 @@
         </ComplexType>
         <EntityType Name="tblAYDSAddressInformation">
           <Key>
-            <PropertyRef Name="AddressInfoId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="AddressInfoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int32" />
           <Property Name="AddressType" Type="Int32" />
           <Property Name="FirstName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
@@ -499,17 +499,17 @@
         </EntityType>
         <EntityType Name="tblAYDSAddressType">
           <Key>
-            <PropertyRef Name="AddressTypeId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="AddressTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="AddressType" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tblAYDSAddressInformations" Relationship="AtYourDoorStepModel.FK_tblAYDSAddressInformation_tblAYDSAddressType" FromRole="tblAYDSAddressType" ToRole="tblAYDSAddressInformation" />
         </EntityType>
         <EntityType Name="tblAYDSBookingDetail">
           <Key>
-            <PropertyRef Name="BookingId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="BookingId" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
           <Property Name="UserId" Type="Int32" />
           <Property Name="SenderId" Type="Int32" />
           <Property Name="RecieverId" Type="Int32" />
@@ -525,16 +525,16 @@
         </EntityType>
         <EntityType Name="tblAYDSBookingStatu">
           <Key>
-            <PropertyRef Name="BookingStatusId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="BookingStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BookingStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tblAYDSCity">
           <Key>
-            <PropertyRef Name="CityId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="CityId" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="City" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="Country" Type="Int32" Nullable="false" />
           <Property Name="State" Type="Int32" Nullable="false" />
@@ -546,9 +546,9 @@
         </EntityType>
         <EntityType Name="tblAYDSCountry">
           <Key>
-            <PropertyRef Name="CountryId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="CountryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Country" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="CountryCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
           <Property Name="CountryShortCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
@@ -559,9 +559,9 @@
         </EntityType>
         <EntityType Name="tblAYDSParcelDetail">
           <Key>
-            <PropertyRef Name="ParcelId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ParcelId" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="ParcelType" Type="Int32" Nullable="false" />
           <Property Name="Weight" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Width" Type="Decimal" Precision="18" Scale="2" />
@@ -572,17 +572,17 @@
         </EntityType>
         <EntityType Name="tblAYDSParcelType">
           <Key>
-            <PropertyRef Name="ParcleTypeId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ParcleTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ParcleType" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tblAYDSParcelDetails" Relationship="AtYourDoorStepModel.FK_tblAYDSParcelDetails_tblAYDSParcelType" FromRole="tblAYDSParcelType" ToRole="tblAYDSParcelDetail" />
         </EntityType>
         <EntityType Name="tblAYDSState">
           <Key>
-            <PropertyRef Name="StateId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="StateName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="Country" Type="Int32" Nullable="false" />
           <NavigationProperty Name="tblAYDSCities" Relationship="AtYourDoorStepModel.FK_tblAYDSCity_tblAYDSState" FromRole="tblAYDSState" ToRole="tblAYDSCity" />
@@ -590,9 +590,9 @@
         </EntityType>
         <EntityType Name="tblAYDSTrackingInformation">
           <Key>
-            <PropertyRef Name="TrackingId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="TrackingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BookingId" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
           <Property Name="CurrentStateDateTime" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="CurrentLocation" Type="String" Nullable="false" MaxLength="1050" FixedLength="false" Unicode="false" />
@@ -600,9 +600,9 @@
         </EntityType>
         <EntityType Name="tblAYDSUserInformation">
           <Key>
-            <PropertyRef Name="UserId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="false" />
           <Property Name="IsVerified" Type="Boolean" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
@@ -626,7 +626,7 @@
           <End Type="AtYourDoorStepModel.tblAYDSAddressInformation" Role="tblAYDSAddressInformation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblAYDSAddressType">
-              <PropertyRef Name="AddressTypeId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="tblAYDSAddressInformation">
               <PropertyRef Name="AddressType" />
@@ -638,7 +638,7 @@
           <End Type="AtYourDoorStepModel.tblAYDSAddressInformation" Role="tblAYDSAddressInformation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblAYDSCity">
-              <PropertyRef Name="CityId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="tblAYDSAddressInformation">
               <PropertyRef Name="City" />
@@ -650,7 +650,7 @@
           <End Type="AtYourDoorStepModel.tblAYDSAddressInformation" Role="tblAYDSAddressInformation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblAYDSCountry">
-              <PropertyRef Name="CountryId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="tblAYDSAddressInformation">
               <PropertyRef Name="Country" />
@@ -662,7 +662,7 @@
           <End Type="AtYourDoorStepModel.tblAYDSAddressInformation" Role="tblAYDSAddressInformation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblAYDSUserInformation">
-              <PropertyRef Name="UserId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="tblAYDSAddressInformation">
               <PropertyRef Name="UserId" />
@@ -674,7 +674,7 @@
           <End Type="AtYourDoorStepModel.tblAYDSBookingDetail" Role="tblAYDSBookingDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblAYDSAddressInformation">
-              <PropertyRef Name="AddressInfoId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="tblAYDSBookingDetail">
               <PropertyRef Name="RecieverId" />
@@ -686,7 +686,7 @@
           <End Type="AtYourDoorStepModel.tblAYDSBookingDetail" Role="tblAYDSBookingDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblAYDSAddressInformation">
-              <PropertyRef Name="AddressInfoId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="tblAYDSBookingDetail">
               <PropertyRef Name="SenderId" />
@@ -698,7 +698,7 @@
           <End Type="AtYourDoorStepModel.tblAYDSBookingDetail" Role="tblAYDSBookingDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblAYDSParcelDetail">
-              <PropertyRef Name="ParcelId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="tblAYDSBookingDetail">
               <PropertyRef Name="ParcleType" />
@@ -710,7 +710,7 @@
           <End Type="AtYourDoorStepModel.tblAYDSBookingDetail" Role="tblAYDSBookingDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblAYDSUserInformation">
-              <PropertyRef Name="UserId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="tblAYDSBookingDetail">
               <PropertyRef Name="UserId" />
@@ -722,7 +722,7 @@
           <End Type="AtYourDoorStepModel.tblAYDSTrackingInformation" Role="tblAYDSTrackingInformation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblAYDSBookingDetail">
-              <PropertyRef Name="BookingId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="tblAYDSTrackingInformation">
               <PropertyRef Name="BookingId" />
@@ -734,7 +734,7 @@
           <End Type="AtYourDoorStepModel.tblAYDSCity" Role="tblAYDSCity" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblAYDSCountry">
-              <PropertyRef Name="CountryId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="tblAYDSCity">
               <PropertyRef Name="Country" />
@@ -746,7 +746,7 @@
           <End Type="AtYourDoorStepModel.tblAYDSCity" Role="tblAYDSCity" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblAYDSState">
-              <PropertyRef Name="StateId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="tblAYDSCity">
               <PropertyRef Name="State" />
@@ -758,7 +758,7 @@
           <End Type="AtYourDoorStepModel.tblAYDSUserInformation" Role="tblAYDSUserInformation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblAYDSCity">
-              <PropertyRef Name="CityId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="tblAYDSUserInformation">
               <PropertyRef Name="City" />
@@ -770,7 +770,7 @@
           <End Type="AtYourDoorStepModel.tblAYDSState" Role="tblAYDSState" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblAYDSCountry">
-              <PropertyRef Name="CountryId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="tblAYDSState">
               <PropertyRef Name="Country" />
@@ -782,7 +782,7 @@
           <End Type="AtYourDoorStepModel.tblAYDSUserInformation" Role="tblAYDSUserInformation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblAYDSCountry">
-              <PropertyRef Name="CountryId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="tblAYDSUserInformation">
               <PropertyRef Name="Country" />
@@ -794,7 +794,7 @@
           <End Type="AtYourDoorStepModel.tblAYDSParcelDetail" Role="tblAYDSParcelDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblAYDSParcelType">
-              <PropertyRef Name="ParcleTypeId" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="tblAYDSParcelDetail">
               <PropertyRef Name="ParcelType" />
@@ -838,7 +838,7 @@
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="AddressType" ColumnName="AddressType" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="AddressInfoId" ColumnName="AddressInfoId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -846,7 +846,7 @@
             <EntityTypeMapping TypeName="AtYourDoorStepModel.tblAYDSAddressType">
               <MappingFragment StoreEntitySet="tblAYDSAddressType">
                 <ScalarProperty Name="AddressType" ColumnName="AddressType" />
-                <ScalarProperty Name="AddressTypeId" ColumnName="AddressTypeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -860,7 +860,7 @@
                 <ScalarProperty Name="RecieverId" ColumnName="RecieverId" />
                 <ScalarProperty Name="SenderId" ColumnName="SenderId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -868,7 +868,7 @@
             <EntityTypeMapping TypeName="AtYourDoorStepModel.tblAYDSBookingStatu">
               <MappingFragment StoreEntitySet="tblAYDSBookingStatus">
                 <ScalarProperty Name="BookingStatus" ColumnName="BookingStatus" />
-                <ScalarProperty Name="BookingStatusId" ColumnName="BookingStatusId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -879,7 +879,7 @@
                 <ScalarProperty Name="State" ColumnName="State" />
                 <ScalarProperty Name="Country" ColumnName="Country" />
                 <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -889,7 +889,7 @@
                 <ScalarProperty Name="CountryShortCode" ColumnName="CountryShortCode" />
                 <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
                 <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -901,7 +901,7 @@
                 <ScalarProperty Name="Width" ColumnName="Width" />
                 <ScalarProperty Name="Weight" ColumnName="Weight" />
                 <ScalarProperty Name="ParcelType" ColumnName="ParcelType" />
-                <ScalarProperty Name="ParcelId" ColumnName="ParcelId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -909,7 +909,7 @@
             <EntityTypeMapping TypeName="AtYourDoorStepModel.tblAYDSParcelType">
               <MappingFragment StoreEntitySet="tblAYDSParcelType">
                 <ScalarProperty Name="ParcleType" ColumnName="ParcleType" />
-                <ScalarProperty Name="ParcleTypeId" ColumnName="ParcleTypeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -918,7 +918,7 @@
               <MappingFragment StoreEntitySet="tblAYDSState">
                 <ScalarProperty Name="Country" ColumnName="Country" />
                 <ScalarProperty Name="StateName" ColumnName="StateName" />
-                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -928,7 +928,7 @@
                 <ScalarProperty Name="CurrentLocation" ColumnName="CurrentLocation" />
                 <ScalarProperty Name="CurrentStateDateTime" ColumnName="CurrentStateDateTime" />
                 <ScalarProperty Name="BookingId" ColumnName="BookingId" />
-                <ScalarProperty Name="TrackingId" ColumnName="TrackingId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -948,11 +948,11 @@
                 <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
                 <ScalarProperty Name="IsVerified" ColumnName="IsVerified" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

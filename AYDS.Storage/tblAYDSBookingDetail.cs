@@ -19,7 +19,7 @@ namespace AYDS.Storage
             this.tblAYDSTrackingInformations = new HashSet<tblAYDSTrackingInformation>();
         }
     
-        public string BookingId { get; set; }
+        public string Id { get; set; }
         public Nullable<int> UserId { get; set; }
         public Nullable<int> SenderId { get; set; }
         public Nullable<int> RecieverId { get; set; }

@@ -22,7 +22,7 @@ namespace AYDS.Storage
             this.tblAYDSUserInformations = new HashSet<tblAYDSUserInformation>();
         }
     
-        public int CountryId { get; set; }
+        public int Id { get; set; }
         public string Country { get; set; }
         public string CountryCode { get; set; }
         public string CountryShortCode { get; set; }

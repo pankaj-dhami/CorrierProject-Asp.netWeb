@@ -19,7 +19,7 @@ namespace AYDS.Storage
             this.tblAYDSAddressInformations = new HashSet<tblAYDSAddressInformation>();
         }
     
-        public int AddressTypeId { get; set; }
+        public int Id { get; set; }
         public string AddressType { get; set; }
     
         public virtual ICollection<tblAYDSAddressInformation> tblAYDSAddressInformations { get; set; }

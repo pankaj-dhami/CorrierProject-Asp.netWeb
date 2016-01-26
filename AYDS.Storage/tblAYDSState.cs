@@ -19,7 +19,7 @@ namespace AYDS.Storage
             this.tblAYDSCities = new HashSet<tblAYDSCity>();
         }
     
-        public int StateId { get; set; }
+        public int Id { get; set; }
         public string StateName { get; set; }
         public int Country { get; set; }
     

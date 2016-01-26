@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="BusinessObject\BookingDetail.cs" />
     <Compile Include="BusinessObject\BookingHistory.cs" />
+    <Compile Include="BusinessObject\FareDetails.cs" />
     <Compile Include="BusinessObject\TrackingInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BusinessObject\User.cs" />

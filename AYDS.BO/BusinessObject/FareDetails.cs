@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace AYDS.BO
 {
-    class TrackingInformation
+    public class FareDetails
     {
+        public int id { get; set; }
+        public int amount { get; set; }
+        public string plan { get; set; }
     }
 }

@@ -20,7 +20,7 @@ namespace AYDS.Storage
             this.tblAYDSBookingDetails1 = new HashSet<tblAYDSBookingDetail>();
         }
     
-        public int AddressInfoId { get; set; }
+        public int Id { get; set; }
         public Nullable<int> UserId { get; set; }
         public Nullable<int> AddressType { get; set; }
         public string FirstName { get; set; }

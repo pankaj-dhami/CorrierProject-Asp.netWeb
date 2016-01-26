@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace AYDS.BO
+namespace CourrierWeb.Models
 {
-    class UserDetails
+    public class UserDetails
     {
-        public int UserId { get; set; }        
+        public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime DOB { get; set; }
@@ -18,13 +17,4 @@ namespace AYDS.BO
         public string City { get; set; }
         public string Password { get; set; }
     }
-
-    class UserLoginDTO
-    {
-        public int UserId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public int MobileNumber { get; set; }
-        public string EmailId { get; set; }
-    }  
 }
